@@ -19,6 +19,7 @@
 
     {{--CSS Boostrap--}}
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/fonts/awesome/css/font-awesome.min.css') }}">
 
 
     {{--CSS self-definition--}}
