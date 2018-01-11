@@ -17,23 +17,22 @@
                             <h3 class='footer-menu-heading'>Liên hệ</h3>
                         </div>
                         <a class='footer-logo' href='#' title='Mitsubishi'>
-                            <img alt='Mitsubishi' src='footer-logo.png'/>
+                            <img alt='Mitsubishi' src='{{ asset('/images/logo.png') }}'/>
                         </a>
-                        <p><b>Địa chỉ:</b> 805 Giải Phóng - Q.Hoàng Mai- Hà Nội</p>
-                        <p><b>Hotline:</b> 0944.398.388</p>
-                        <p><b>Email:</b> quocdoan@vinhquangmotors.com.vn</p>
+                        <p><b>Địa chỉ:</b> ???</p>
+                        <p><b>Hotline:</b> ???</p>
+                        <p><b>Email:</b> ???</p>
                     </div>
                 </div>
                 <div class='col-md-4 col-sm-6 col-xs-12 foo_col'>
                     <div class='footer-menu'>
                         <h3 class='footer-menu-heading'>Facebook</h3>
                         <div class='facebook'>
-                            <div class='fb-page' data-adapt-container-width='true' data-height='300px'
-                                 data-hide-cover='false'
-                                 data-href='https://www.facebook.com/profile.php?id=100005634243617'
-                                 data-show-facepile='true' data-small-header='false' data-tabs='timeline'>
-                                <div class='fb-xfbml-parse-ignore'></div>
-                            </div>
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1985541788378982"
+                                    width="340" height="300" style="border:none;
+                                    overflow:hidden" scrolling="no"
+                                    frameborder="0" allowTransparency="true">
+                            </iframe>
                         </div>
                     </div>
                 </div>
@@ -51,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class='footer-bottom footer-body-hoangthien'>
+    <div class='footer-bottom'>
         <div class='container'>
             <div class='row'>
                 <div class='col-xs-12'>

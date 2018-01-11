@@ -37,3 +37,41 @@
 .stick-menu .dropdown-menu{
     background-color: #d6000e;
 }
+
+.footer{
+    background-image: url("../images/1.jpg");
+    color: #babbbd;
+}
+
+.footer-content h3,.footer-content b{
+    color: #ffffff;
+}
+
+.footer-menu .footer-menu-heading {
+    padding: 15px 0;
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 22px;
+}
+
+.footer-logo {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    max-width: 250px;
+}
+
+.footer-bottom .copy-right {
+    margin: 0;
+    padding: 30px 0;
+    font-size: 12px;
+}
+
+.footer-info p {
+    font-size: 13px;
+    line-height: 30px;
+    color: #eee;
+}
