@@ -1,0 +1,39 @@
+.header-search .btn-sm{
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    top: 0px;
+    right: 0px;
+}
+
+#header-search-input{
+    width: 100%;
+    background-color: #f3f3f3;
+    outline: none;
+    border: none;
+    height: 34px;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #828585;
+}
+
+.stick-menu{
+    background-color: #d6000e;
+}
+
+.stick-menu li a{
+    text-transform: uppercase;
+}
+
+.stick-menu li a{
+    color: white;
+}
+
+.stick-menu li a:hover, .stick-menu li a:focus{
+    background-color: white;
+    color: red;
+}
+
+.stick-menu .dropdown-menu{
+    background-color: #d6000e;
+}

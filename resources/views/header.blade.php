@@ -6,7 +6,7 @@
  * Time: 12:54
  */
 ?>
-<header class='card-header'>
+<header class='header'>
     <div class="container">
         <div class='row'>
             <div class='col-md-3'>
@@ -16,10 +16,10 @@
             </div>
             <div class='col-md-6 align-self-center'>
                 <div class='header-search'>
-                    <form action='/search' id='header-search' method='get'>
+                    <form action='/' id='header-search' method='get'>
                         <input id='header-search-input' name='q' placeholder='Tìm kiếm' type='text' value=''/>
-                        <button type="submit" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-search"></span>
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <span class="fa fa-search"></span>
                         </button>
                     </form>
                 </div>

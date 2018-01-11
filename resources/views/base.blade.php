@@ -15,12 +15,13 @@
 <head>
     <meta charset='utf-8'/>
     <title>Motorbike @yield('title')</title>
-    <link rel="shortcut icon"  href="https://i.ytimg.com/vi/fUWrhetZh9M/maxresdefault.jpg">
+    <link rel="shortcut icon" href="{{ asset('/images/vk.jpg') }}">
 
     {{--CSS Boostrap--}}
-    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/fonts/awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/base-style.css') }}">
 
 
     {{--CSS self-definition--}}
@@ -28,8 +29,9 @@
     {{--End CSS--}}
 
     {{--JS Boostrap--}}
-    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
 
     {{--JS self-definition--}}
     @yield('styles')

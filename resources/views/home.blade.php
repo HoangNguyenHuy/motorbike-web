@@ -6,50 +6,7 @@
  * Time: 16:58
  */
 ?>
-    <!-- Navigation -->
-    <div class='stick-menu'>
-        <div class='container'>
-            <nav class='main-nav hidden-xs hidden-sm'>
-                <div class='main-nav-content'>
-                    <ul>
-                        <li><a href='/'>Trang chủ</a></li>
-                        <li><a href='#LINK'>Giới thiệu</a></li>
-                        <li class='desk-level1'>
-                            <a href='/search/label/san-pham'>Sản phẩm <i class='fa fa-caret-down'></i></a>
-                            <ul>
-                                <li><a href='#LINK'>ATTRAGE</a></li>
-                                <li><a href='#LINK'>MIRAGE</a></li>
-                                <li><a href='#LINK'>OUTLANDER</a></li>
-                                <li><a href='#LINK'>OUTLANDER SPORT</a></li>
-                                <li><a href='#LINK'>TRITON</a></li>
-                                <li><a href='#LINK'>PAJERO</a></li>
-                                <li><a href='#LINK'>PAJERO SPORT</a></li>
-                                <li><a href='#LINK'>ALL NEW PAJERO SPORT</a></li>
-                            </ul>
-                        </li>
-                        <li><a href='/bang-gia'>Bảng giá</a></li>
-                        <li class='desk-level1'>
-                            <a href='/search/label/Tin-tuc'>Tin tức <i class='fa fa-caret-down'></i></a>
-                            <ul>
-                            </ul>
-                        </li>
-                        <li><a href='/lien-he'>Liên hệ</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- End Navigation -->
-
-
-
-
-
-
-
-
-
-
+@include('navigate')
     {{--<!-- Main Slider -->--}}
     {{--<div class='main-slider'>--}}
     {{--<div class=''>--}}
