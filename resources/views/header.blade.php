@@ -18,7 +18,9 @@
                 <div class='header-search'>
                     <form action='/search' id='header-search' method='get'>
                         <input id='header-search-input' name='q' placeholder='Tìm kiếm' type='text' value=''/>
-                        <button id='header-search-btn' type='submit'><i class='glyphicon glyphicon-apple'></i></button>
+                        <button type="submit" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
                     </form>
                 </div>
             </div>

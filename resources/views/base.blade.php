@@ -19,6 +19,7 @@
 
     {{--CSS Boostrap--}}
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/fonts/awesome/css/font-awesome.min.css') }}">
 
 
@@ -27,7 +28,8 @@
     {{--End CSS--}}
 
     {{--JS Boostrap--}}
-{{--    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>--}}
+    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>
 
     {{--JS self-definition--}}
     @yield('styles')
