@@ -27,3 +27,5 @@
         </div>
     </div>
 </header>
+@include('navigate')
+@include('slide-show')
