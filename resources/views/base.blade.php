@@ -32,6 +32,7 @@
     <script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/bootstrap-hover-dropdown.min.js') }}"></script>
 
     {{--JS self-definition--}}
     @yield('styles')

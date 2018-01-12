@@ -14,7 +14,8 @@
                 <li><a href='/'>Trang chủ</a></li>
                 <li><a href='#'>Giới thiệu</a></li>
                 <li class='dropdown'>
-                    <a href='#' class="dropdown-toggle" id="menu1" data-toggle="dropdown">Sản phẩm</a>
+                    <a href='#' class="dropdown-toggle" id="menu1" data-toggle="dropdown"
+                       data-close-others="false"  data-hover="dropdown" data-delay="50">Sản phẩm</a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li><a href='#'>attrage</a></li>
                         <li><a href='#'>mirage</a></li>
