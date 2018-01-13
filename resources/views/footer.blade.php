@@ -11,7 +11,7 @@
     <div class='footer-content'>
         <div class='container'>
             <div class='row'>
-                <div class='col-md-4 col-sm-6 col-xs-12 foo_col'>
+                <div class='col-md-4 col-sm-12 col-xs-12'>
                     <div class='footer-info'>
                         <div class='footer-menu'>
                             <h3 class='footer-menu-heading'>Liên hệ</h3>
@@ -24,19 +24,19 @@
                         <p><b>Email:</b> ???</p>
                     </div>
                 </div>
-                <div class='col-md-4 col-sm-6 col-xs-12 foo_col'>
+                <div class='col-md-4 col-sm-12 col-xs-12'>
                     <div class='footer-menu'>
                         <h3 class='footer-menu-heading'>Facebook</h3>
                         <div class='facebook'>
                             <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1985541788378982"
-                                    width="340" height="300" style="border:none;
+                                    width="100%" height="300" style="border:none;
                                     overflow:hidden" scrolling="no"
                                     frameborder="0" allowTransparency="true">
                             </iframe>
                         </div>
                     </div>
                 </div>
-                <div class='col-md-4 col-xs-12 foo_col'>
+                <div class='col-md-4 col-sm-12 col-xs-12'>
                     <div class='footer-menu'>
                         <h3 class='footer-menu-heading'>Bản đồ</h3>
                         <div class='map2'>
