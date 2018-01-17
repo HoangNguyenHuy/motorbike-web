@@ -16,14 +16,20 @@ class CreateMotorbikesTable extends Migration
         Schema::create('motorbikes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('license_plates')->unique();
-            $table->string('number_chassis')->unique();
-            $table->string('number_engine')->unique();
+            $table->string('name');
+            $table->string('license_plates')->unique(); // biển số xe
+            $table->string('number_chassis')->unique(); // số khung
+            $table->string('number_engine')->unique(); // số máy
             $table->string('color');
-            $table->integer('capacity');
+            $table->integer('capacity'); // dung tích si lanh
             $table->integer('status')->default(0);
-            $table->integer('is_full_certificate')->default(0);
-            $table->integer('id_register');
+            $table->foreign('type_id')
+                ->references('id')->on('motorbike_types')
+                ->onDelete('cascade'); // id loại xe
+            $table->integer('is_full_certificate')->default(0); // đầy đủ giấy tờ
+            $table->integer('id_register')->default(0); // số giấy đăng ký
+            $table->integer('thumbnail'); // ảnh mô tả
+            $table->integer('price');
         });
     }
 

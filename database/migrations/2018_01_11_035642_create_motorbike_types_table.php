@@ -16,6 +16,11 @@ class CreateMotorbikeTypesTable extends Migration
         Schema::create('motorbike_types', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('name');
+            $table->string('total'); // tổng số xe hiện có
+            $table->foreign('mft_id')
+                ->references('id')->on('manufacturers')
+                ->onDelete('cascade'); // id hãng sản xuất
         });
     }
 
