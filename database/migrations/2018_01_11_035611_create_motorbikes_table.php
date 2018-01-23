@@ -23,9 +23,7 @@ class CreateMotorbikesTable extends Migration
             $table->string('color');
             $table->integer('capacity'); // dung tích si lanh
             $table->integer('status')->default(0);
-            $table->foreign('type_id')
-                ->references('id')->on('motorbike_types')
-                ->onDelete('cascade'); // id loại xe
+            $table->integer('type_id')->default(0); // id loại xe
             $table->integer('is_full_certificate')->default(0); // đầy đủ giấy tờ
             $table->integer('id_register')->default(0); // số giấy đăng ký
             $table->integer('thumbnail'); // ảnh mô tả

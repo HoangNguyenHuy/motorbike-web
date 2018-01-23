@@ -18,9 +18,7 @@ class CreateMotorbikeTypesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('total'); // tổng số xe hiện có
-            $table->foreign('mft_id')
-                ->references('id')->on('manufacturers')
-                ->onDelete('cascade'); // id hãng sản xuất
+            $table->integer('mft_id'); // id hãng sản xuất
         });
     }
 
