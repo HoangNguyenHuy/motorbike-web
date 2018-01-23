@@ -12,3 +12,6 @@
 */
 
 Route::get('/','home@getHomePage');
+Route::get('/admin','admin\LoginController@getLogin');
+Route::get('login','admin\LoginController@getLogin');
+Route::post('/admin','admin\LoginController@postLogin');
