@@ -32,12 +32,13 @@
             {{--@endforeach--}}
         {{--@endif--}}
 
+        {{ $errors }}
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 Thông tin đăng ký không đầy đủ, bạn cần chỉnh sửa như sau:
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="text-capitalize">{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
