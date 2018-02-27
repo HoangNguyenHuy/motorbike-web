@@ -32,12 +32,13 @@
             {{--@endforeach--}}
         {{--@endif--}}
 
+        {{ $errors }}
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 Thông tin đăng ký không đầy đủ, bạn cần chỉnh sửa như sau:
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="text-capitalize">{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
@@ -50,7 +51,7 @@
         <div class="logo">login</div>
         <!-- Main Form -->
         <div class="login-form-1">
-            <form id="login-form" class="text-left">
+            <form id="login-form" class="text-left" method="post">
                 {{ csrf_field ()}}
                 <div class="login-form-main-message"></div>
                 <div class="main-login-form">
