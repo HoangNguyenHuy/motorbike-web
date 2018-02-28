@@ -14,40 +14,18 @@
       xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
     <meta charset='utf-8'/>
-    <title>Motorbike @yield('title')</title>
+    <title>Motorbike</title>
     <link rel="shortcut icon" href="{{ asset('/images/vk.jpg') }}">
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/fonts/awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/js/admin-login.js') }}">
-    <link rel="stylesheet" href="{{ asset('/css/admin-login.css') }}">
+    <link rel="stylesheet" type=text/css href="{{ asset('/css/admin-login.css') }}">
+    <script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/jquery.validate.min.js') }}"></script>
 </head>
 <body>
     <!-- Login Form -->
     <div class="text-center" style="padding:50px 0">
-        {{--@if(isset($error))--}}
-            {{--<div>{{ $error }} ahihi </div>--}}
-            {{--@foreach($error as $error)--}}
-                {{--<div class="alert alert-danger">{{$error}}</div>--}}
-            {{--@endforeach--}}
-        {{--@endif--}}
-
-        {{ $errors }}
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                Thông tin đăng ký không đầy đủ, bạn cần chỉnh sửa như sau:
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li class="text-capitalize">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        @if (isset($message))
-            <div class="alert alert-success">
-                {{ $message }}
-            </div>
-        @endif
         <div class="logo">login</div>
         <!-- Main Form -->
         <div class="login-form-1">
@@ -71,13 +49,28 @@
                     </div>
                     <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
                 </div>
-                {{--<div class="etc-login-form">--}}
-                    {{--<p>forgot your password? <a href="#">click here</a></p>--}}
-                    {{--<p>new user? <a href="#">create new account</a></p>--}}
-                {{--</div>--}}
+                @if (isset($error))
+                    <div class="error-msg alert alert-danger">
+                        <ul>
+                            @foreach ($error as $error)
+                                <li class="text-capitalize list-inline">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if (isset($message))
+                    <div class="alert alert-success">
+                        {{ $message }}
+                    </div>
+                @endif
+                <div class="etc-login-form">
+                    <p>Forgot your password? <a href="#">click here</a></p>
+                    <p>New user? <a href="#">create new account</a></p>
+                </div>
             </form>
         </div>
-        <!-- end:Main Form -->
+        <!-- End Main Form -->
     </div>
     <!-- End Login Form -->
+    <script src="{{ asset('/js/admin-login.js') }}"></script>
 </body>

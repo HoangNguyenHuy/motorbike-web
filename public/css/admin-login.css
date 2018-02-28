@@ -265,3 +265,11 @@ label:hover:before {
     color: #aaaaaa;
     font-weight: bold;
 }
+
+.error-msg {
+    margin-bottom: 0px;
+}
+
+.error-msg ul {
+    padding-left: 0px;
+}

@@ -39,7 +39,7 @@ class UserController extends Controller
         // login
         $rules = [
             'user' => 'required',
-            'pass' => 'required',
+            'password' => 'required',
         ];
         $messages = [
             'required' => ':attribute không được để trống',
@@ -47,9 +47,10 @@ class UserController extends Controller
 //        Auth::login($user, true);
         $Validator = Validator::make($request->all(), $rules, $messages);
         if ($Validator->fails()) {
-            $errors['error'] = redirect()->back()->withErrors($Validator);
-//            $errors = $Validator->errors()->all();
-            return view('admin/login', $errors);
+//            $errors['error'] = redirect()->back()->withErrors($Validator);
+            $error = $Validator->errors()->all();
+            $data['error'] =$error;
+            return view('admin/login', $data);
         } else {
             $arr = [
                 'name' => $request->user,
