@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use DB;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -38,8 +40,8 @@ class UserController extends Controller
     {
         // login
         $rules = [
-            'user' => 'required',
-            'password' => 'required',
+            'lg_username' => 'required',
+            'lg_password' => 'required',
         ];
         $messages = [
             'required' => ':attribute không được để trống',
@@ -53,15 +55,15 @@ class UserController extends Controller
             return view('admin/login', $data);
         } else {
             $arr = [
-                'name' => $request->user,
-                'password' => $request->pass
+                'name' => $request->lg_username,
+                'password' => md5($request->lg_password)
             ];
             If (DB::table('users')->where($arr)->count() == 1) {
-                Return 'dang nhap thanh cong';
+                $data['error'] = ['dang nhap thanh cong'];
             } else {
-                $errors['error'] = 'đăng nhập thất bại';
+                $data['error'] = ['đăng nhập thất bại'];
             }
-            Return 'ok';
+            return view('admin/login', $data);
         }
     }
 

@@ -146,10 +146,26 @@
         if($form.valid())
         {
             form_loading($form);
-
-            setTimeout(function() {
-                form_success($form);
-            }, 2000);
+            var user = $('#lg_username').val().trim();
+            var password = $('#lg_password').val().trim();
+            var remember = $('#lg_remember').val();
+            var params = {
+                user:user,
+                password:password,
+                remember:remember
+            };
+            var client = new HttpClient();
+            client.get('/admin', function(response) {
+                setTimeout(function() {
+                    form_success($form);
+                }, 2000);
+            });
+            // var xhttp = new XMLHttpRequest();
+            // xhttp.open( "POST", '/admin', true );
+            // xhttp.send();
+            // setTimeout(function() {
+            //     form_success($form);
+            // }, 2000);
         }
     }
 
