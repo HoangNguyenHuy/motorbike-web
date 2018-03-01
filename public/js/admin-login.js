@@ -154,11 +154,27 @@
                 password:password,
                 remember:remember
             };
-            var client = new HttpClient();
-            client.get('/admin', function(response) {
-                setTimeout(function() {
-                    form_success($form);
-                }, 2000);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                // headers: {"X-Test-Header": "test-value"},
+                dataType : 'json',
+                type: "post",
+                url: "/admin",
+                data: params,
+                // contentType: false,
+                contentType: 'application/json; charset=utf-8',
+                processData: false,
+                success: function(data) {
+                    $("#ajaxResponse").append("<div>"+data.error+"</div>");
+                    // $("#ajaxResponse").append("<div>"+data+"</div>");
+                },
+                error: function(data, textStatus, errorThrown){
+                    console.log(data);
+                    console.log("test status: "+textStatus);
+                    console.log("thrown exception: "+errorThrown);
+                }
             });
             // var xhttp = new XMLHttpRequest();
             // xhttp.open( "POST", '/admin', true );

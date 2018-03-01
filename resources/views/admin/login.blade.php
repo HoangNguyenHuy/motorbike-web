@@ -49,6 +49,7 @@
                     </div>
                     <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
                 </div>
+                {{--{{ Session::get('message') }}--}}
                 @if (isset($error))
                     <div class="error-msg alert alert-danger">
                         <ul>
@@ -69,8 +70,10 @@
                 </div>
             </form>
         </div>
+        <div id="ajaxResponse"></div> {{-- TODO remove here --}}
         <!-- End Main Form -->
     </div>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- End Login Form -->
     <script src="{{ asset('/js/admin-login.js') }}"></script>
 </body>

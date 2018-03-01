@@ -38,10 +38,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+//        $article = new Article($request->all());
+//        Auth::user()->articles()->save($article);
+//
+//        $response = array(
+//            'status' => 'success',
+//            'msg' => 'Setting created successfully',
+//        );
+//        return \Response::json($response);
         // login
         $rules = [
-            'lg_username' => 'required',
-            'lg_password' => 'required',
+            'username' => 'required',
+            'password' => 'required',
         ];
         $messages = [
             'required' => ':attribute không được để trống',
@@ -52,7 +60,7 @@ class UserController extends Controller
 //            $errors['error'] = redirect()->back()->withErrors($Validator);
             $error = $Validator->errors()->all();
             $data['error'] =$error;
-            return view('admin/login', $data);
+            return \Response::json($data);
         } else {
             $arr = [
                 'name' => $request->lg_username,
@@ -63,7 +71,12 @@ class UserController extends Controller
             } else {
                 $data['error'] = ['đăng nhập thất bại'];
             }
-            return view('admin/login', $data);
+//            set value into session
+//            return Redirect::to('/admin')->with('message', 'Login Failed');
+//            get value {{ Session::get('message') }}
+            return \Response::json($data);
+//            return View::make('admin/login', array('name' => 'Taylor'));
+//            return view('admin/login', $data);
         }
     }
 
