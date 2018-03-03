@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\_const\strings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Validator;
 use DB;
 use DataTables;
@@ -38,43 +40,39 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-//        $article = new Article($request->all());
-//        Auth::user()->articles()->save($article);
-//
-//        $response = array(
-//            'status' => 'success',
-//            'msg' => 'Setting created successfully',
-//        );
-//        return \Response::json($response);
         // login
         $rules = [
             'username' => 'required',
             'password' => 'required',
         ];
         $messages = [
-            'required' => ':attribute không được để trống',
+            'required' => ':attribute is required',
         ];
 //        Auth::login($user, true);
         $Validator = Validator::make($request->all(), $rules, $messages);
         if ($Validator->fails()) {
-//            $errors['error'] = redirect()->back()->withErrors($Validator);
             $error = $Validator->errors()->all();
+            foreach ($error as $key => $err){
+                $error[$key] = ucfirst($err);
+            };
             $data['error'] =$error;
-            return \Response::json($data);
+            return response()->json($data);
         } else {
-            $arr = [
-                'name' => $request->lg_username,
-                'password' => md5($request->lg_password)
+            $conditions = [
+                'name' => $request->username,
+                'password' => md5($request->password)
             ];
-            If (DB::table('users')->where($arr)->count() == 1) {
-                $data['error'] = ['dang nhap thanh cong'];
+            If (DB::table('users')->where($conditions)->count() == 1) {
+                $data['success'] = ['dang nhap thanh cong'];
             } else {
-                $data['error'] = ['đăng nhập thất bại'];
+                $data['error'] = [ucfirst(strings::login_fail)];
+                return response()->json($data)->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
+
             }
 //            set value into session
 //            return Redirect::to('/admin')->with('message', 'Login Failed');
 //            get value {{ Session::get('message') }}
-            return \Response::json($data);
+            return response()->json($data);
 //            return View::make('admin/login', array('name' => 'Taylor'));
 //            return view('admin/login', $data);
         }

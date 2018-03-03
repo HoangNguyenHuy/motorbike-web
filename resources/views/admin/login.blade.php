@@ -70,7 +70,6 @@
                 </div>
             </form>
         </div>
-        <div id="ajaxResponse"></div> {{-- TODO remove here --}}
         <!-- End Main Form -->
     </div>
     <meta name="csrf-token" content="{{ csrf_token() }}">

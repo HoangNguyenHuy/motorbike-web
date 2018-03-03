@@ -132,10 +132,19 @@
         $form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
     }
 
-    function form_failed($form)
+    function form_failed($form, errors)
     {
+        var err_msg = '';
+        if (errors.length >1){
+            $.each(errors, function( _, error) {
+                err_msg += error + '<br/>';
+            });
+        }
+        else {
+            err_msg = errors;
+        }
         $form.find('[type=submit]').addClass('error').html(options['btn-error']);
-        $form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
+        $form.find('.login-form-main-message').addClass('show error').html(err_msg);
     }
 
     // Dummy Submit Form (Remove this)
@@ -146,11 +155,11 @@
         if($form.valid())
         {
             form_loading($form);
-            var user = $('#lg_username').val().trim();
+            var username = $('#lg_username').val().trim();
             var password = $('#lg_password').val().trim();
             var remember = $('#lg_remember').val();
             var params = {
-                user:user,
+                username:username,
                 password:password,
                 remember:remember
             };
@@ -158,17 +167,18 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                // headers: {"X-Test-Header": "test-value"},
-                dataType : 'json',
                 type: "post",
                 url: "/admin",
                 data: params,
-                // contentType: false,
-                contentType: 'application/json; charset=utf-8',
-                processData: false,
-                success: function(data) {
-                    $("#ajaxResponse").append("<div>"+data.error+"</div>");
-                    // $("#ajaxResponse").append("<div>"+data+"</div>");
+                success: function(data, textStatus, xhr) {
+                    if(data.error){
+                        setTimeout(function() {
+                            form_failed($form, data.error);
+                        }, 2000);
+                    }
+                    // console.log("test status: "+textStatus);
+                    // console.log("status: "+xhr.status);
+                    // console.log("head: "+xhr.getAllResponseHeaders());
                 },
                 error: function(data, textStatus, errorThrown){
                     console.log(data);
@@ -176,12 +186,6 @@
                     console.log("thrown exception: "+errorThrown);
                 }
             });
-            // var xhttp = new XMLHttpRequest();
-            // xhttp.open( "POST", '/admin', true );
-            // xhttp.send();
-            // setTimeout(function() {
-            //     form_success($form);
-            // }, 2000);
         }
     }
 
