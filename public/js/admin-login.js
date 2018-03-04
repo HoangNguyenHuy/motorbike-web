@@ -157,7 +157,7 @@
             form_loading($form);
             var username = $('#lg_username').val().trim();
             var password = $('#lg_password').val().trim();
-            var remember = $('#lg_remember').val();
+            var remember = $('#lg_remember:checked').length;
             var params = {
                 username:username,
                 password:password,
@@ -168,13 +168,16 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: "post",
-                url: "/admin",
+                url: "/login",
                 data: params,
                 success: function(data, textStatus, xhr) {
                     if(data.error){
                         setTimeout(function() {
                             form_failed($form, data.error);
                         }, 2000);
+                    }
+                    else{
+                        window.location.href = data.redirect;
                     }
                     // console.log("test status: "+textStatus);
                     // console.log("status: "+xhr.status);

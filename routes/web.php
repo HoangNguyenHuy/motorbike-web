@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/','home@getHomePage');
-Route::get('/admin','admin\UserController@index');
-Route::post('/admin','admin\UserController@store');
+Route::get('/','home@getHomePage')->name('home');
+
+Route::get('/login','Auth\LoginController@index')->name('login');
+Route::post('/login','Auth\LoginController@login');
+Route::post('/logout','Auth\LoginController@logout')->name('logout');
+Route::get('/admin','home@getHomePage')->name('admin.home');
