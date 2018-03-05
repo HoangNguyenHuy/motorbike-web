@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class manufacturer extends Model
+class motorbike_type extends Model
 {
     //
 }
