@@ -7,7 +7,6 @@
  */
 ?>
 <!-- Main Blog -->
-<div class='container'>
     <div class='row'>
         <!-- Left Navigate -->
         <div class='col-md-3 col-xs-12'>
@@ -175,5 +174,4 @@
         </div>
         <!-- End Product List -->
     </div>
-</div>
 <!-- End Main Blog -->

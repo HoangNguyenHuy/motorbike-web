@@ -42,10 +42,12 @@
 <body>
     <div class='page'>
         <!-- Header -->
-        @include('header')
+        @include('header', ['is_show_slide' => $is_show_slide])
         <!-- End Header -->
         <!-- Container -->
-        @yield('container')
+        <div class='container'>
+            @yield('container')
+        </div>
         <!-- End Container -->
         <!-- Footer -->
         @include('footer')

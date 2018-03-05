@@ -48,6 +48,9 @@ class LoginController extends Controller
 //    }
 
     public function index(){
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
         return view('admin/login');
     }
 
@@ -77,7 +80,7 @@ class LoginController extends Controller
             $auth_user = User::where($conditions)->first();
             If ($auth_user) {
                 Auth::login($auth_user,$request->remember == 1);
-                $data['redirect'] = route('admin.home');
+                $data['redirect'] = route('home');
             } else {
                 $data['error'] = [ucfirst(strings::login_fail)];
                 return response()->json($data);
@@ -89,6 +92,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect(route('login'));
+        return redirect(route('home'));
     }
 }

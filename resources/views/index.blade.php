@@ -6,7 +6,7 @@
  * Time: 13:03
  */
 ?>
-@extends('base')
+@extends('base', ['is_show_slide'=> true])
 @section('container')
     @include('home')
 @stop()
