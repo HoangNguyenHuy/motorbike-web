@@ -10,7 +10,7 @@
     <div class="container">
         <div class='row'>
             <div class='col-md-3'>
-                <a class='header-logo' href='{{ url('admin') }}'> {{-- TODO change href, this is for debug --}}
+                <a class='header-logo' href='{{ route('home') }}'>
                     <img src='{{ asset('/images/logo.png') }}' width="100" height="100" alt="logo"/>
                 </a>
             </div>
