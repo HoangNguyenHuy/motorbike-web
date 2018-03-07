@@ -8,5 +8,10 @@
 ?>
 @extends('base', ['is_show_slide'=> false])
 @section('container')
-    @include('admin/left-menu')
+    <div class='row'>
+        @include('admin/left-menu')
+        <div class='col-md-9 col-xs-12'>
+            {!! $form !!}
+        </div>
+    </div>
 @stop()

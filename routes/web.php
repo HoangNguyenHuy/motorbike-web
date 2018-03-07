@@ -17,6 +17,7 @@ Route::get('/login','Auth\LoginController@index')->name('login');
 Route::post('/login','Auth\LoginController@login');
 Route::group(['middleware' => 'isLogin'], function () {
     Route::post('/logout','Auth\LoginController@logout')->name('logout');
+    Route::get('/user-info','admin\UserController@show')->name('user-info');
     Route::group(['prefix'=>'/admin'] , function () {
         Route::get('/','admin\HomeController@index')->name('admin.home');
     });

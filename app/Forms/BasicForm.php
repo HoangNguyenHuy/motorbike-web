@@ -11,9 +11,13 @@ namespace App\Forms;
 use Collective\Html\FormFacade;
 class BasicForm
 {
-    function init(){
-        FormFacade::open(array('url' => 'foo/bar'));
-        FormFacade::close();
+    static function init_form($route, $form_fields, $method='post', $is_file='false'){
+        $html = (
+            FormFacade::open(array('route' => $route, 'method' => $method, 'files' => $is_file)).
+            $form_fields.
+            FormFacade::close()
+        );
+        return $html;
     }
 
     static function render_text_input($name , $label='', $default_value='', $placeholder='', $attrs=array()){
@@ -33,7 +37,7 @@ class BasicForm
         return $html;
     }
 
-    static function render_email_field($default_value='', $placeholder='Email Address', $attrs=array()){
+    static function render_email_input($default_value='', $placeholder='Email Address', $attrs=array()){
         $attrs['placeholder']  = $placeholder;
         $html = (
             FormFacade::label('Email').' : '.
@@ -42,4 +46,21 @@ class BasicForm
         return $html;
     }
 
+    static function render_password_input($label='', $placeholder='', $attrs=array()){
+        $attrs['placeholder']  = $placeholder;
+        $html = (
+            FormFacade::label('password', $label).' : '.
+            FormFacade::password('password')
+        );
+        return $html;
+    }
+    static function user_info_form(){
+        $fields = (
+            self::render_text_input('Họ và tên').
+            self::render_password_input('Password').
+            self::render_email_input()
+        );
+        $html = self::init_form('user-info',$fields);
+        return $html;
+    }
 }

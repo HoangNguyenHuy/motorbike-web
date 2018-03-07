@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin/login');
+        //
     }
 
     /**
@@ -86,7 +86,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // return user info
     }
 
     /**

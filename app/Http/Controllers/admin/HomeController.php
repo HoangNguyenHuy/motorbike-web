@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Forms\BasicForm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin/index');
+        $data['form'] = BasicForm::user_info_form();
+        return view('admin/index',$data);
     }
 
     /**
