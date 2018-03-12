@@ -15,7 +15,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['form'] = BasicForm::user_info_form();
+        $data = array();
+        $fields = BasicForm::user_info_form();
+        $data['form'] = BasicForm::init_form('user-info');
+        $data['submit'] = BasicForm::render_button('abc');
+        $data = $data + $fields;
         return view('admin/index',$data);
     }
 

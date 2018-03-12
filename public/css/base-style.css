@@ -2,6 +2,14 @@ a, a:hover{
     text-decoration: none;
 }
 
+label, p{
+    text-transform: lowercase;
+}
+
+label::first-letter, p::first-letter {
+    text-transform: uppercase;
+}
+
 .header{
     margin: 10px 0;
 }
@@ -270,4 +278,25 @@ a, a:hover{
 
 .simpleCart_shelfItem {
     position: relative;
+}
+
+.card {
+    position: relative;
+    opacity: 1;
+    margin: 15px 0px;
+    padding: 30px 20px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    -moz-border-radius:1px;
+    -khtml-border-radius:1px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 1px 5px 0.5px rgba(0,0,0,0.1), 0 0.5px 2.5px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 1px 5px 0.5px rgba(0,0,0,0.1),0 0.5px 2.5px 0 rgba(0,0,0,0.2);
+    -ms-box-shadow: 0 1px 5px 0.5px rgba(0,0,0,0.1),0 0.5px 2.5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 1px 5px 0.5px rgba(0,0,0,0.1), 0 0.5px 2.5px 0 rgba(0,0,0,0.2);
+    transition: opacity 0.15s ease-in;
+}
+
+.card-content {
+    padding: 26px 40px;
 }
