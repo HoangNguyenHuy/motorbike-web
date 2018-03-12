@@ -18,7 +18,7 @@ class HomeController extends Controller
         $data = array();
         $fields = BasicForm::user_info_form();
         $data['form'] = BasicForm::init_form('user-info');
-        $data['submit'] = BasicForm::render_button('abc');
+        $data['submit'] = BasicForm::render_button('Lưu',['class'=>'btn-primary btn-save pull-right']);
         $data = $data + $fields;
         return view('admin/index',$data);
     }

@@ -37,3 +37,6 @@
 @section('css-uncompress')
     <link rel="stylesheet" type=text/css href="{{ asset('/css/form.css') }}">
 @stop()
+{{--@section('styles')--}}
+    {{--<script src="{{ asset('/js/user-info.js') }}"></script>--}}
+{{--@stop()--}}

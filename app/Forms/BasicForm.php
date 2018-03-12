@@ -16,13 +16,13 @@ class BasicForm
     }
 
     static function render_button($name, $attrs=array(), $is_submit=true){
-        $attrs['class']  = 'btn';
+        $attrs['class']  = 'btn'.' '.((array_key_exists("class", $attrs))?$attrs['class']:'');
         $button = ($is_submit)?'submit':'button';
         return FormFacade::$button($name, $attrs);
     }
 
     static function render_label($name , $label='', $attrs=array(), $is_space=false){
-        $attrs['class']  = 'control-label';
+        $attrs['class']  = 'control-label'.' '.((array_key_exists("class", $attrs))?$attrs['class']:'');
         $html = (
             FormFacade::label($name, $label, $attrs).(($is_space)?' : ':'')
         );
@@ -31,7 +31,7 @@ class BasicForm
 
     static function render_text_input($name , $label='', $default_value='', $placeholder='', $attrs=array()){
         $attrs['placeholder']  = $placeholder;
-        $attrs['class']  = 'ai-input form-control';
+        $attrs['class']  = 'ai-input form-control'.' '.((array_key_exists("class", $attrs))?$attrs['class']:'');
         $html = (
             '<div class="form-group">'.
             self::render_label($name, $label).
@@ -54,7 +54,7 @@ class BasicForm
 
     static function render_email_input($default_value='', $placeholder='Email Address', $attrs=array()){
         $attrs['placeholder']  = $placeholder;
-        $attrs['class']  = 'ai-input form-control';
+        $attrs['class']  = 'ai-input form-control'.' '.((array_key_exists("class", $attrs))?$attrs['class']:'');
         $html = (
             '<div class="form-group">'.
             self::render_label('Email').
@@ -67,7 +67,7 @@ class BasicForm
 
     static function render_password_input($name='', $label='', $placeholder='', $attrs=array()){
         $attrs['placeholder']  = $placeholder;
-        $attrs['class']  = 'ai-input form-control';
+        $attrs['class']  = 'ai-input form-control'.' '.((array_key_exists("class", $attrs))?$attrs['class']:'');
         $name = (empty($name)) ? 'password' : $name;
         $html = (
             '<div class="form-group">'.
@@ -79,25 +79,25 @@ class BasicForm
         return $html;
     }
 
-    static function render_select($label, array $choices){
+    static function render_select($label='', array $choices, $add_label=true){
         $html = '<div class="form-group">';
         foreach ($choices as $choice){
-            $html= $html.(
-                FormFacade::radio($label, $choice['value']).
-                self::render_label($choice['label'])
-            );
+            $html= $html.FormFacade::radio($label, $choice['value'],($choice['checked'])?true:false, ($choice['attrs'])?$choice['attrs']:'');
+            if($add_label){
+                $html = $html.self::render_label($choice['label']);
+            }
         }
         return $html.'</div>';
     }
 
     static function user_info_form(){
-        $choices[] = array('label'=>'Nam', 'value'=>1);
-        $choices[] = array('label'=>'Nữ', 'value'=>0);
+        $choices[] = array('label'=>'Nam', 'value'=>1, 'checked'=>true, 'attrs'=>['data-icon'=>'']);
+        $choices[] = array('label'=>'Nữ', 'value'=>0, 'checked'=>false, 'attrs'=>['data-icon'=>'']);
         $fields['name'] = self::render_text_input('Họ và tên', '', '', 'Full name');
         $fields['phone_number'] = self::render_text_input('Liên hệ','','', 'Phone number');
         $fields['password'] = self::render_password_input('mật khẩu', '','Password');
         $fields['email'] = self::render_email_input();
-        $fields['sex'] = self::render_select('sex',$choices);
+        $fields['sex'] = self::render_select('sex',$choices,false);
         $fields['address'] = self::render_text_input('Địa chỉ');
         $fields['avatar'] = self::render_file_input('Ảnh đại diện');
         return $fields;
