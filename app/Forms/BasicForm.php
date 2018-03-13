@@ -82,7 +82,9 @@ class BasicForm
     static function render_select($label='', array $choices, $add_label=true){
         $html = '<div class="form-group">';
         foreach ($choices as $choice){
-            $html= $html.FormFacade::radio($label, $choice['value'],($choice['checked'])?true:false, ($choice['attrs'])?$choice['attrs']:'');
+            $checked = (array_key_exists("checked", $choice));
+            $attrs = (array_key_exists("attrs", $choice));
+            $html= $html.FormFacade::radio($label, $choice['value'],$checked?$choice['checked']:false, $attrs?$choice['attrs']:'');
             if($add_label){
                 $html = $html.self::render_label($choice['label']);
             }

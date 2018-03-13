@@ -37,7 +37,7 @@ input[name='sex']:after {
     font-family: 'FontAwesome';
     display: inline-block;
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
     content: attr(data-icon);
     padding: 15px;
     border-radius: 15px;
@@ -52,17 +52,4 @@ input[name='sex']:checked:after {
     -webkit-box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     color: #25C9D0;
-}
-
-.btn-primary{
-    background: #25C9D0;
-    border: 1px solid rgba(0,0,0,0.15);
-    color: #ffffff;
-    padding: 10px 20px;
-    font-weight: 600;
-    box-shadow: none!important;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    border-radius: 3px;
 }

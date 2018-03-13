@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/fonts/awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type=text/css href="{{ asset('/css/base-style.css') }}">
+    <link rel="stylesheet" type=text/css href="{{ asset('/css/button.css') }}">
 
 
     {{--CSS self-definition--}}

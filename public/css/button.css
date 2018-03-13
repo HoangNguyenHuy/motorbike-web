@@ -1,0 +1,35 @@
+.btn-primary,
+.btn-save{
+    min-width: 110px;
+    /*display: none;*/
+}
+
+.btn-primary{
+    background: #25C9D0;
+    border: 1px solid rgba(0,0,0,0.15);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-weight: 600;
+    box-shadow: none!important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.btn {
+    display: block;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+.btn-primary:active,
+.btn-primary:hover,
+.btn-primary:focus{
+    background: #0BB4BA;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-weight: 600;
+    box-shadow: none !important;
+    border: 1px solid rgba(0, 0, 0, .15);
+}
