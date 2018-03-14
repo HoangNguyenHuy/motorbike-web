@@ -33,7 +33,7 @@
                 </li>
                 <li><a href='/'>Liên hệ</a></li>
                 @if(Auth::user())
-                    <li><a href="{{ route('admin.home') }}">admin</a></li>
+                    <li><a href="{{ route('user-info') }}">admin</a></li>
                 @endif
             </ul>
         </div>

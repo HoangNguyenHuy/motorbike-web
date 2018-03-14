@@ -30,18 +30,20 @@
                             {{--</div>--}}
                             <div class="user-info">
                                 <div class="profile-pic">
-                                    <img src="https://source.unsplash.com/random/300x300"/>
+                                    <img src="{{ $avatar_url }}"/>
                                     <div class="layer">
                                         <div class="loader"></div>
                                     </div>
                                     <a class="image-wrapper" href="#">
-                                        <input class="hidden-input" id="changePicture" type="file"/>
-                                        <label class="edit glyphicon glyphicon-pencil" for="changePicture" type="file" title="Change picture"></label>
+                                        {!! $avatar !!}
+                                        {{--<input class="hidden-input" id="changePicture" name="changePicture" type="file">--}}
+                                        {{--<label for="changePicture" class="control-label edit glyphicon glyphicon-pencil" type="file" title="Change picture">ChangePicture</label>--}}
+                                        {{--<label class="edit glyphicon glyphicon-pencil" for="changePicture" type="file" title="Change picture"></label>--}}
                                     </a>
                                 </div>
                                 <div class="username">
-                                    <div class="name"><span class="verified"></span>@John Doe</div>
-                                    <div class="about">Frontend developer and coffee lover</div>
+                                    <div class="name"><span class="verified"></span>{{ $user_name }}</div>
+                                    <div class="about">{{ $email_login }}</div>
                                 </div>
                             </div>
                         </div>

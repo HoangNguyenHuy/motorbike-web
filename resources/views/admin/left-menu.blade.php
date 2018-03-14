@@ -12,7 +12,7 @@
         <h3 class='main-categories-heading'>Chức năng</h3>
         <div class='main-categories-content'>
             <ul class='mc-list'>
-                <li><a href='/attrage-2'>Quản trị</a></li>
+                <li><a href='{{ route('user-info') }}'>Quản trị</a></li>
                 <li><a href='/mirage-1'>Hãng sản xuất</a></li>
                 <li><a href='/outlander-1'>Bán xe</a></li>
                 <li><a href='/outlander-sport-1'>Thống kê</a></li>

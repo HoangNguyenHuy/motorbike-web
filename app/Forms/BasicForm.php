@@ -42,11 +42,11 @@ class BasicForm
         return $html;
     }
 
-    static function render_file_input($name, $label='', $attrs=array()){
+    static function render_file_input($name, $label='', $attrs_label=array(), $attrs_file=array()){
         $html = (
             '<div class="form-group">'.
-            self::render_label($name, $label).
-            FormFacade::file($name, $attrs).
+            self::render_label($name, $label, $attrs_label).
+            FormFacade::file($name, $attrs_file).
             '</div>'
         );
         return $html;
@@ -92,16 +92,18 @@ class BasicForm
         return $html.'</div>';
     }
 
-    static function user_info_form(){
-        $choices[] = array('label'=>'Nam', 'value'=>1, 'checked'=>true, 'attrs'=>['data-icon'=>'']);
-        $choices[] = array('label'=>'Nữ', 'value'=>0, 'checked'=>false, 'attrs'=>['data-icon'=>'']);
-        $fields['name'] = self::render_text_input('Họ và tên', '', '', 'Full name');
-        $fields['phone_number'] = self::render_text_input('Liên hệ','','', 'Phone number');
+    static function user_info_form($profile){
+        $choices[] = array('label'=>'Nam', 'value'=>1, 'checked'=>$profile['sex']==1?true:false, 'attrs'=>['data-icon'=>'']);
+        $choices[] = array('label'=>'Nữ', 'value'=>0, 'checked'=>$profile['sex']==0?true:false, 'attrs'=>['data-icon'=>'']);
+        $attrs_label = ['class'=>'edit glyphicon glyphicon-pencil', 'type'=>'file', 'title'=>'Change picture'];
+        $attrs_file = ['class'=>'hidden-input', 'id'=>'changePicture'];
+        $fields['name'] = self::render_text_input('Họ và tên', '', $profile['name'], 'Full name');
+        $fields['phone_number'] = self::render_text_input('Liên hệ','',$profile['phone_number'], 'Phone number');
         $fields['password'] = self::render_password_input('mật khẩu', '','Password');
-        $fields['email'] = self::render_email_input();
+        $fields['email'] = self::render_email_input($profile['email']);
         $fields['sex'] = self::render_select('sex',$choices,false);
-        $fields['address'] = self::render_text_input('Địa chỉ');
-        $fields['avatar'] = self::render_file_input('Ảnh đại diện');
+        $fields['address'] = self::render_text_input('Địa chỉ','',$profile['address']);
+        $fields['avatar'] = self::render_file_input('changePicture', '',$attrs_label,$attrs_file);
         return $fields;
     }
 }

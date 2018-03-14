@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\_const\strings;
-use Illuminate\Http\Request;
+use App\Forms\BasicForm;
 use App\Http\Controllers\Controller;
+use App\_const\strings;
+
+use App\Models\User;
+use App\Models\UserProfile;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use DB;
 use DataTables;
@@ -19,7 +25,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = $this->show(Auth::user()->id);
+        $data = array();
+        $fields = BasicForm::user_info_form($user);
+        $data['form'] = BasicForm::init_form('user-info');
+        $data['submit'] = BasicForm::render_button('Lưu',['class'=>'btn-primary btn-save pull-right']);
+        $data['user_name'] = $user['user_name'];
+        $data['email_login'] = $user['email_login'];
+//        $data['avatar_url'] = $user['avatar_url'];
+        $data['avatar_url'] = 'https://source.unsplash.com/random/300x300'; // TODO debug
+        $data = $data + $fields;
+        return view('admin/index',$data);
     }
 
     /**
@@ -67,7 +83,6 @@ class UserController extends Controller
             } else {
                 $data['error'] = [ucfirst(strings::login_fail)];
                 return response()->json($data)->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
-
             }
 //            set value into session
 //            return Redirect::to('/admin')->with('message', 'Login Failed');
@@ -86,7 +101,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // return user info
+        $user = User::where(['id' => $id])->first();
+        If ($user) {
+            $profile = UserProfile::where(['user_id' => $user['id']])->first();
+            $profile['user_name'] = $user['name'];
+            $profile['email_login'] = $user['email'];
+            return $profile;
+        } else {
+            $data['error'] = ucfirst(strings::user_does_not_exist);
+            return response()->json($data)->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
+        }
     }
 
     /**
