@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Auth;
+use Exception;
 use Validator;
 use DB;
 use DataTables;
@@ -145,5 +146,46 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function save_avatar(Request $request){
+        try {
+            $data = $_POST['image'];
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            $imageName = time().'.png';
+            file_put_contents('images/avatars/'.$imageName, $data);
+            echo 'done';
+//            if(isset($_POST) && isset($_FILES['avatar'])){
+//                $avatar_info = $_FILES['avatar'];
+//                $avatar = $request->avatar;
+//                $extension = ['jpg', 'png', 'gif', 'jpeg'];
+//                $ext = explode('.', $avatar_info['name']); // split extension of file
+//                $ext = $ext[(count($ext)-1)]; // get extension
+//
+//                // check file is an image
+//                if(in_array($ext, $extension)){
+//
+//                    // handle upload
+//                    // if(move_uploaded_file($avatar_info['tmp_name'], 'images/avatars/' . $avatar_info['name'])){
+//                    if(file_put_contents('images/avatars/' . $avatar_info['name'], file_get_contents($avatar))){
+//                        // success
+//                        die($avatar_info['name']);
+//                    } else{
+//                        // fail
+//                        die('Có lỗi!');
+//                    }
+//                } else{
+//                    // The file is not an image
+//                    die('Chỉ được upload ảnh');
+//                }
+//            }
+//            else{
+//                die('Lock'); // is not post method
+//            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ', $e->getMessage();
+        }
     }
 }

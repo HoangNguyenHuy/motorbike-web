@@ -14,6 +14,7 @@
       xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
     <meta charset='utf-8'/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Motorbike @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('/images/vk.jpg') }}">
 

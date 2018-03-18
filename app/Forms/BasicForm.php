@@ -42,13 +42,12 @@ class BasicForm
         return $html;
     }
 
-    static function render_file_input($name, $label='', $attrs_label=array(), $attrs_file=array()){
-        $html = (
-            '<div class="form-group">'.
-            self::render_label($name, $label, $attrs_label).
-            FormFacade::file($name, $attrs_file).
-            '</div>'
-        );
+    static function render_file_input($name, $label='', $attrs_label=array(), $attrs_file=array(), $add_label=true){
+        $html = '';
+        if($add_label){
+            $html = $html.self::render_label($name, $label, $attrs_label);
+        }
+        $html = $html.FormFacade::file($name, $attrs_file);
         return $html;
     }
 
@@ -103,7 +102,7 @@ class BasicForm
         $fields['email'] = self::render_email_input($profile['email']);
         $fields['sex'] = self::render_select('sex',$choices,false);
         $fields['address'] = self::render_text_input('Địa chỉ','',$profile['address']);
-        $fields['avatar'] = self::render_file_input('changePicture', '',$attrs_label,$attrs_file);
+        $fields['avatar'] = self::render_file_input('changePicture', '',$attrs_label,$attrs_file,false);
         return $fields;
     }
 }
