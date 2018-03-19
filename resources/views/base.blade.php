@@ -35,6 +35,7 @@
     <script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap-hover-dropdown.min.js') }}"></script>
+    <script src="{{ asset('/js/base.js') }}"></script>
 
     {{--JS self-definition--}}
     @yield('styles')

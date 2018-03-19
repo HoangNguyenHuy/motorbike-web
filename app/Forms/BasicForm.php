@@ -11,8 +11,8 @@ namespace App\Forms;
 use Collective\Html\FormFacade;
 class BasicForm
 {
-    static function init_form($route, $method='post', $is_file=false){
-        return FormFacade::open(array('route' => $route, 'method' => $method, 'files' => $is_file));
+    static function init_form($route, $form_id, $method='post', $is_file=false){
+        return FormFacade::open(array('route' => $route, 'method' => $method, 'files' => $is_file, 'id'=>$form_id));
     }
 
     static function render_button($name, $attrs=array(), $is_submit=true){

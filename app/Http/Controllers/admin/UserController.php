@@ -29,8 +29,8 @@ class UserController extends Controller
         $user = $this->show(Auth::user()->id);
         $data = array();
         $fields = BasicForm::user_info_form($user);
-        $data['form'] = BasicForm::init_form('user-info');
-        $data['submit'] = BasicForm::render_button('Lưu',['class'=>'btn-primary btn-save pull-right']);
+        $data['form'] = BasicForm::init_form('user-info','userInfoForm', '','');
+        $data['submit'] = BasicForm::render_button('Lưu',['class'=>'btn-primary btn-save pull-right hide']);
         $data['user_name'] = $user['user_name'];
         $data['email_login'] = $user['email_login'];
 //        $data['avatar_url'] = $user['avatar_url'];

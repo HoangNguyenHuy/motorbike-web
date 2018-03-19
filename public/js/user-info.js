@@ -83,6 +83,7 @@
                 height: 300
             }
         });
+        JBase.detectFormChange($(this).find('#userInfoForm'));
         $('#changePicture').on('change', function () {
             var reader = new FileReader();
             reader.onload = function (e) {
