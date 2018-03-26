@@ -56,9 +56,9 @@ class BasicForm
         $attrs['class']  = 'ai-input form-control'.' '.((array_key_exists("class", $attrs))?$attrs['class']:'');
         $html = (
             '<div class="form-group">'.
-            self::render_label('Email').
+            self::render_label('email').
             '<div class="controls">'.
-            FormFacade::email('Email', $default_value, $attrs).
+            FormFacade::email('email', $default_value, $attrs).
             '</div></div>'
         );
         return $html;
@@ -96,12 +96,12 @@ class BasicForm
         $choices[] = array('label'=>'Nữ', 'value'=>0, 'checked'=>$profile['sex']==0?true:false, 'attrs'=>['data-icon'=>'']);
         $attrs_label = ['class'=>'edit glyphicon glyphicon-pencil', 'type'=>'file', 'title'=>'Change picture'];
         $attrs_file = ['class'=>'hidden-input', 'id'=>'changePicture'];
-        $fields['name'] = self::render_text_input('Họ và tên', '', $profile['name'], 'Full name');
-        $fields['phone_number'] = self::render_text_input('Liên hệ','',$profile['phone_number'], 'Phone number');
-        $fields['password'] = self::render_password_input('mật khẩu', '','Password');
+        $fields['name'] = self::render_text_input('name', 'Họ và tên', $profile['name'], 'Full name');
+        $fields['phone_number'] = self::render_text_input('phone_number','Liên hệ',$profile['phone_number'], 'Phone number');
+        $fields['password'] = self::render_password_input('password', 'mật khẩu','Password');
         $fields['email'] = self::render_email_input($profile['email']);
         $fields['sex'] = self::render_select('sex',$choices,false);
-        $fields['address'] = self::render_text_input('Địa chỉ','',$profile['address']);
+        $fields['address'] = self::render_text_input('address','Địa chỉ',$profile['address']);
         $fields['avatar'] = self::render_file_input('changePicture', '',$attrs_label,$attrs_file,false);
         return $fields;
     }

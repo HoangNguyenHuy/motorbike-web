@@ -29,7 +29,7 @@
         {{--</div>--}}
     {{--</div>--}}
     <div class='row'>
-        {{--@include('admin/left-menu')--}}
+        @include('admin/left-menu')
         <div class='col-md-9 col-xs-12'>
             <div class="card card-content clearfix">
                 {!! $form !!}
