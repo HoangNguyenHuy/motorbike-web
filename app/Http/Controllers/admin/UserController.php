@@ -5,13 +5,15 @@ namespace App\Http\Controllers\admin;
 use App\Forms\BasicForm;
 use App\Http\Controllers\Controller;
 use App\_const\strings;
-
+use App\Serializes\UserSerialize;
 use App\Models\User;
 use App\Models\UserProfile;
+use App\Response\ResponseCustom;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 use Illuminate\Support\Facades\Auth;
+
 use Exception;
 use Validator;
 use DB;
@@ -134,7 +136,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user_info = UserProfile::where(['user_id' => $id])->first();
+        $data = $request->all();
+        $user_data = UserSerialize::serialize($user_info);
+//        TODO update here, using $user_data for update user current
+        if($user_info){
+            $data_update = [
+                'name'=> $data['name'],
+                'sex'=> $data['sex'],
+                'phone_number'=> $data['phone_number'],
+                'address'=> $data['address'],
+                'email'=> $data['email'],
+            ];
+            $user_info->update($data_update);
+        }
+        return ResponseCustom::response($user_info);
     }
 
     /**

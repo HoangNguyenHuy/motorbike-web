@@ -13,5 +13,8 @@ class strings
 {
     const login_fail = 'Wrong login credentials!';
     const user_does_not_exist = 'User does not exist.';
+    const undefined_serialize = 'Undefined serialize class.';
+    const undefined_rules = 'Undefined rules.';
+    const undefined_model = 'Undefined model.';
 
 }

@@ -300,3 +300,26 @@ label::first-letter, p::first-letter {
 .card-content {
     padding: 26px 40px;
 }
+
+#message-ctn{
+    position: fixed;
+    /* stype show/hide alert box */
+    /*display: none;*/
+    /*****/
+    width: 100%;
+    z-index: 1003;
+    top: 0;
+    background: #fcf8e3;
+    border-bottom: #fbeed5 1px solid;
+    color: #c39350;
+    padding: 17px 0 16px 0;
+    font-size: 12px;
+    line-height: 14px;
+    /* stype opacity alert box */
+    /*transition: opacity 0.6s;*/
+    /*opacity: 1;*/
+    /*****/
+    /* stype dropdown alert box */
+    top: -50px;
+    transition: all 500ms linear;
+}
