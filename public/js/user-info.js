@@ -1,4 +1,4 @@
-(function($) {
+;(function($) {
     "use strict";
 
     var URL_avatar_change = '';
@@ -68,6 +68,72 @@
         return PictureUpdate;
     }());
 
+    window.UserInfo = {
+        init : function($form){
+            this.initForm($form);
+        },
+        initForm: function ($form) {
+            var self = this;
+            var rules = {
+                name : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter full name'
+                        }
+                    }
+                },
+                email : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter email'
+                        },
+                        regexp: {
+                            regexp: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+                            message: 'Invalid email'
+                        }
+                    }
+                },
+                phone_number : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter phone number'
+                        },
+                        phone: {
+                            country: 'GB',
+                            message: 'Invalid phone number'
+                        }
+                    }
+                }
+            };
+            Base_Validator.set_validator($form, rules, {live_validate: "disabled"});
+            $form.on('success.form.bv', function(e) {
+                e.preventDefault();
+                self.doSubmit($form);
+            });
+        },
+        doSubmit: function($form) {
+            var self = this;
+            var url = $form.attr('action') + '/1';
+            JBase.send(url,{
+                type: 'POST',
+                data: $form.serialize(),
+                success: function(res) {
+                    if (res.success) {
+                        $form.find("input[type='submit']").addClass('hide');
+                        JBase.setDefaultValue($form);
+                        JBase.message(ostring.changes_saved);
+                    } else {
+                        self.handleSubmitError($form, res);
+                    }
+                    // TODO check this method in olivia
+                    // DocumentListener.unbind();
+                }
+            });
+        },
+        handleSubmitError: function ($form, res) {
+            $form.trigger('submit_error', res);
+        }
+    };
     $(document).ready(function () {
         new PictureUpdate;
         // TODO test crop image
@@ -83,6 +149,7 @@
                 height: 300
             }
         });
+        JBase.setDefaultValue($(this).find('#userInfoForm'));
         JBase.detectFormChange($(this).find('#userInfoForm'));
         $('#changePicture').on('change', function () {
             var reader = new FileReader();
@@ -115,6 +182,6 @@
                 });
             });
         });
-
+        window.UserInfo.init($(this).find('#userInfoForm'));
     });
 })(jQuery);

@@ -31,10 +31,16 @@
     {{--End CSS--}}
 
     {{--JS Boostrap--}}
+    {{-- TODO update import same olivia-ui templates/base.html --}}
+    {{-- TODO how to return current user form controller to js --}}
     <script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap-hover-dropdown.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/jquery.validate.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
+    <script src="{{ asset('/js/Ostring.js') }}"></script>
     <script src="{{ asset('/js/base.js') }}"></script>
 
     {{--JS self-definition--}}
@@ -47,6 +53,16 @@
         <!-- Header -->
         @include('header', ['is_show_slide' => $is_show_slide])
         <!-- End Header -->
+        <div id="message-ctn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-9 message"></div>
+                    <div class="col-xs-3 text-right">
+                        <a href="#" class="action">X</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Container -->
         <div class='container'>
             @yield('container')
