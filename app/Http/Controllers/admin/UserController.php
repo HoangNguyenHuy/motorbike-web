@@ -136,21 +136,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user_info = UserProfile::where(['user_id' => $id])->first();
-        $data = $request->all();
-        $user_data = UserSerialize::serialize($user_info);
-//        TODO update here, using $user_data for update user current
-        if($user_info){
-            $data_update = [
-                'name'=> $data['name'],
-                'sex'=> $data['sex'],
-                'phone_number'=> $data['phone_number'],
-                'address'=> $data['address'],
-                'email'=> $data['email'],
-            ];
-            $user_info->update($data_update);
+        $user = UserProfile::where(['user_id' => $id])->first();
+        $user_data = UserSerialize::serialize($user);
+//        TODO ask Mr.Dao how to send string url of avatar from ajax to api
+//        just now do not include the avatar url in the request
+        if($user){
+            $user->update($user_data);
         }
-        return ResponseCustom::response($user_info);
+        return ResponseCustom::response($user);
     }
 
     /**

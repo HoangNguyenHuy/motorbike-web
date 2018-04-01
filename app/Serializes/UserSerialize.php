@@ -33,6 +33,9 @@ class UserSerialize extends BasicSerialize
                 'required',
                 Rule::unique($this->getModelName())->ignore($instance?$instance->id:0),
             ],
+            'sex' => 'boolean|integer|required',
+            'address' => 'string|nullable',
+            'avatar' => 'string|nullable',
         ];
     }
 }
