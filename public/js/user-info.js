@@ -54,6 +54,7 @@
                         self.destroyLoader(element);
                         $('img', element).fadeIn('fast').attr({'src':URL_avatar_change, 'alt':res});
                     }, 500);
+                    $('#avatar').val(res);
                 }
             });
         };
@@ -70,7 +71,91 @@
 
     window.UserInfo = {
         init : function($form){
+            this.initCrop();
             this.initForm($form);
+        },
+        initCrop: function(){
+            // TODO test crop image
+            // imageResize in dropupload.js of olivia
+            // how to resize image file?
+            var imageResize = function(file, max_size, callback) {
+                var resizedImg;
+                if(file.type.match(/image.*/)) {
+                    var reader = new FileReader();
+                    reader.onload = function (readerEvent) {
+                        var image = new Image();
+                        image.onload = function (imageEvent) {
+                            var canvas = document.createElement('canvas'),
+                                width = image.width,
+                                height = image.height;
+                            if (width > height) {
+                                if (width > max_size) {
+                                    height *= max_size / width;
+                                    width = max_size;
+                                }
+                            } else {
+                                if (height > max_size) {
+                                    width *= max_size / height;
+                                    height = max_size;
+                                }
+                            }
+                            canvas.width = width;
+                            canvas.height = height;
+                            canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                            resizedImg = canvas.toDataURL(file.type);
+                            if($.isFunction(callback)){
+                                callback(resizedImg);
+                            }
+                        }
+                        image.src = readerEvent.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            };
+            // imageResize in dropupload.js of olivia
+            var $uploadCrop = $('#upload-demo').croppie({
+                enableExif: true,
+                viewport: {
+                    width: 200,
+                    height: 200,
+                    type: 'circle'
+                },
+                boundary: {
+                    width: 300,
+                    height: 300
+                }
+            });
+            $('#changePicture').on('change', function () {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $uploadCrop.croppie('bind', {
+                        url: e.target.result
+                    }).then(function(){
+                        console.log('jQuery bind complete');
+                    });
+
+                };
+                reader.readAsDataURL(this.files[0]);
+            });
+            $('.upload-result').on('click', function (ev) {
+                $uploadCrop.croppie('result', {
+                    type: 'canvas',
+                    size: 'viewport'
+                }).then(function (resp) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: "/save-avatar",
+                        data: {"image":resp},
+                        success: function (data) {
+                            var html = '<img src="' + resp + '" />';
+                            $("#upload-demo-i").html(html);
+                        }
+                    });
+                });
+            });
         },
         initForm: function ($form) {
             var self = this;
@@ -136,52 +221,8 @@
     };
     $(document).ready(function () {
         new PictureUpdate;
-        // TODO test crop image
-        var $uploadCrop = $('#upload-demo').croppie({
-            enableExif: true,
-            viewport: {
-                width: 200,
-                height: 200,
-                type: 'circle'
-            },
-            boundary: {
-                width: 300,
-                height: 300
-            }
-        });
         JBase.setDefaultValue($(this).find('#userInfoForm'));
         JBase.detectFormChange($(this).find('#userInfoForm'));
-        $('#changePicture').on('change', function () {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                }).then(function(){
-                    console.log('jQuery bind complete');
-                });
-
-            };
-            reader.readAsDataURL(this.files[0]);
-        });
-        $('.upload-result').on('click', function (ev) {
-            $uploadCrop.croppie('result', {
-                type: 'canvas',
-                size: 'viewport'
-            }).then(function (resp) {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "post",
-                    url: "/save-avatar",
-                    data: {"image":resp},
-                    success: function (data) {
-                        var html = '<img src="' + resp + '" />';
-                        $("#upload-demo-i").html(html);
-                    }
-                });
-            });
-        });
         window.UserInfo.init($(this).find('#userInfoForm'));
     });
 })(jQuery);

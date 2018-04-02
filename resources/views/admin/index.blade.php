@@ -39,6 +39,7 @@
                             <div class="user-info">
                                 <div class="profile-pic">
                                     <img src="{{ $avatar_url }}"/>
+                                    <input type="text" class="hidden-input" name="avatar" id="avatar" value="{{ $avatar_name }}"/>
                                     <div class="layer">
                                         <div class="loader"></div>
                                     </div>
