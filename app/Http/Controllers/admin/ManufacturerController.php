@@ -5,7 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Forms\BasicForm;
 use App\Http\Controllers\Controller;
 
+use App\Models\manufacturer;
+use App\Response\ResponseCustom;
+use App\Serializes\ManufacturerSerialize;
 use Illuminate\Http\Request;
+
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class ManufacturerController extends Controller
 {
@@ -40,7 +46,16 @@ class ManufacturerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data = ManufacturerSerialize::serialize($data);
+        DB::beginTransaction();
+        try {
+            $manufacturer = Manufacturer::create($data);
+            DB::commit();
+            return ResponseCustom::response($manufacturer);
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
     }
 
     /**

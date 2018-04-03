@@ -21,5 +21,5 @@ Route::group(['middleware' => 'isLogin'], function () {
     Route::get('/user-info','admin\UserController@index')->name('user-info');
     Route::post('/user-info/{id}','admin\UserController@update')->name('edit-user');
     Route::get('/manufacturer','admin\ManufacturerController@index')->name('manufacturer');
-    Route::post('/manufacturer','admin\ManufacturerController@create')->name('add-manufacturer');
+    Route::post('/manufacturer','admin\ManufacturerController@store')->name('add-manufacturer');
 });

@@ -67,3 +67,6 @@
     <link rel="stylesheet" type=text/css href="{{ asset('/css/form.css') }}">
     <link rel="stylesheet" type=text/css href="{{ asset('/css/manufacturer.css') }}">
 @stop()
+@section('styles')
+    <script src="{{ asset('/js/admin/manufacturer.js') }}"></script>
+@stop()

@@ -54,6 +54,10 @@ input[name='sex']:checked:after {
     color: #25C9D0;
 }
 
-.has-success .control-label{
+.has-success .control-label {
     color: #333;
+}
+
+.help-block::first-letter {
+    text-transform: uppercase;
 }

@@ -23,9 +23,9 @@
                     URL_avatar_change = URL.createObjectURL(file_data);
                     var form_data = new FormData();
                     form_data.append("avatar", file_data);
-                    $('#cropModal').modal('show');
+                    // $('#cropModal').modal('show');
                     // $('#myModal').modal('hide');
-                    // self.fireAJAX('/save-avatar', form_data, self.profile);
+                    self.fireAJAX('/save-avatar', form_data, self.profile);
                 }
                 else {
                     alert('Chỉ được upload file ảnh');
@@ -71,7 +71,7 @@
 
     window.UserInfo = {
         init : function($form){
-            this.initCrop();
+            // this.initCrop();
             this.initForm($form);
         },
         initCrop: function(){
