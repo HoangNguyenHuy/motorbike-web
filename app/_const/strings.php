@@ -11,6 +11,10 @@ namespace App\_const;
 
 class strings
 {
+    // text
+    const title_manufacturer = 'Danh sách nhà sản xuất.';
+
+    // error
     const login_fail = 'Wrong login credentials!';
     const user_does_not_exist = 'User does not exist.';
     const undefined_serialize = 'Undefined serialize class.';

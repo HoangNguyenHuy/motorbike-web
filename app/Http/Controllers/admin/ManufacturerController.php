@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Forms\BasicForm;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+use Illuminate\Http\Request;
+
+class ManufacturerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = array();
-        $fields = BasicForm::user_info_form();
-        $data['form'] = BasicForm::init_form('user-info');
-        $data['submit'] = BasicForm::render_button('Lưu',['class'=>'btn-primary btn-save pull-right']);
+        $data['form'] = BasicForm::init_form('add-manufacturer','manufacturerForm');
+        $fields = BasicForm::manufacturer_add();
         $data = $data + $fields;
-        return view('admin/index',$data);
+        return view('admin/manufacturer', $data);
     }
 
     /**

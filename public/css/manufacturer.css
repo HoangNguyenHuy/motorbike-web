@@ -1,0 +1,21 @@
+#manufacturer .manufacturer-list .group-row i {
+    opacity: 0.3;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -7px;
+}
+
+#manufacturer .manufacturer-list .group-row {
+    position: relative;
+    color: rgba(85, 85, 85, 0.9);
+    padding: 15px 0;
+}
+
+.bdr-bottom {
+    border-bottom: 1px solid #eff1f5;
+}
+
+form label {
+    font-weight: bold;
+}

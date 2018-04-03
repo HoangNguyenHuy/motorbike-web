@@ -39,7 +39,7 @@ class UserController extends Controller
         $data['avatar_url'] = Core::parseURL($user['avatar']);
         $data['avatar_name'] = $user['avatar'];
         $data = $data + $fields;
-        return view('admin/index',$data);
+        return view('admin/user-info',$data);
     }
 
     /**

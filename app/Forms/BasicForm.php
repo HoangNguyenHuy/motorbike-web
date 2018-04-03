@@ -105,4 +105,11 @@ class BasicForm
         $fields['avatar'] = self::render_file_input('changePicture', '',$attrs_label,$attrs_file,false);
         return $fields;
     }
+
+    static function manufacturer_add(){
+        $fields['name'] = self::render_text_input('name', 'Thêm nhà sản xuất', '','Manufacturer name');
+        $fields['submit'] = BasicForm::render_button('Lưu',['class'=>'btn-primary btn-save', 'style'=>'margin-top: 22px']);
+        return $fields;
+    }
+
 }
