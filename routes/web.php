@@ -12,6 +12,9 @@
 */
 
 Route::get('/','home@getHomePage')->name('home');
+// TODO refactor resource using Route::resource()
+// link https://stackoverflow.com/questions/23505875/laravel-routeresource-vs-routecontroller
+//Route::resource('login', 'Auth\LoginController');
 
 Route::get('/login','Auth\LoginController@index')->name('login');
 Route::post('/login','Auth\LoginController@login');
