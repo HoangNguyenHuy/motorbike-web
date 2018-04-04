@@ -25,6 +25,7 @@
                 </div>
                 {!! Form::close() !!}
                 <div class="manufacturer-list">
+                    @if($manu_list->count())
                     <div class="row">
                         <div class="col-xs-6 col-md-5">
                             <label>Hãng sản xuất</label>
@@ -33,29 +34,22 @@
                             <label>Nhãn hiệu</label>
                         </div>
                     </div>
+                    @endif
                     <div class="group-items">
-                        <div class="bdr-bottom group-row cursor-pt">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-5 padding-right-10">
-                                    Honda
+                        @forelse ($manu_list as $manu)
+                            <div class="bdr-bottom group-row cursor-pt">
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-5 padding-right-10 first-letter">
+                                        {{ $manu->name }}
+                                    </div>
+                                    <div class="col-xs-6 col-md-7 no-padding-left first-letter">
+                                        (currently unused)
+                                    </div>
+                                    <i class="fa fa-chevron-right"></i>
                                 </div>
-                                <div class="col-xs-6 col-md-7 no-padding-left">
-                                    (currently unused)
-                                </div>
-                                <i class="fa fa-chevron-right"></i>
                             </div>
-                        </div>
-                        <div class="bdr-bottom group-row cursor-pt">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-5 padding-right-10">
-                                    Yamaha
-                                </div>
-                                <div class="col-xs-6 col-md-7 no-padding-left">
-                                    (currently unused)
-                                </div>
-                                <i class="fa fa-chevron-right"></i>
-                            </div>
-                        </div>
+                        @empty
+                        @endforelse
                     </div>
                 </div>
             </div>

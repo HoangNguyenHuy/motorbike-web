@@ -23,7 +23,8 @@ class ManufacturerController extends Controller
     public function index()
     {
         $data['form'] = BasicForm::init_form('add-manufacturer','manufacturerForm');
-        $fields = BasicForm::manufacturer_add();
+        $fields = BasicForm::manufacturer_add_form();
+        $data['manu_list'] = manufacturer::all()->sortBy("name");
         $data = $data + $fields;
         return view('admin/manufacturer', $data);
     }

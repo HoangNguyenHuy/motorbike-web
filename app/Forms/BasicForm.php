@@ -106,7 +106,7 @@ class BasicForm
         return $fields;
     }
 
-    static function manufacturer_add(){
+    static function manufacturer_add_form(){
         $fields['name'] = self::render_text_input('name', 'Thêm nhà sản xuất', '','Manufacturer name');
         $fields['submit'] = BasicForm::render_button('Lưu',['class'=>'btn-primary btn-save', 'style'=>'margin-top: 22px']);
         return $fields;

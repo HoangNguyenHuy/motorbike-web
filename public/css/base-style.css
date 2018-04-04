@@ -6,7 +6,7 @@ label, p{
     text-transform: lowercase;
 }
 
-label::first-letter, p::first-letter {
+label::first-letter, p::first-letter, .first-letter::first-letter {
     text-transform: uppercase;
 }
 
