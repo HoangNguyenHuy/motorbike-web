@@ -22,9 +22,14 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
+        $manu_list = manufacturer::all()->sortByDesc("name");
+        $list_item = [];
+        foreach ($manu_list as $manu)
+            // TODO update here, add list bike_type to $list_item
+            $list_item[] = array('id'=>$manu->id, 'name'=>$manu->name);
         $data['form'] = BasicForm::init_form('add-manufacturer','manufacturerForm');
         $fields = BasicForm::manufacturer_add_form();
-        $data['manu_list'] = manufacturer::all()->sortBy("name");
+        $data['manu_list'] = $list_item;
         $data = $data + $fields;
         return view('admin/manufacturer', $data);
     }

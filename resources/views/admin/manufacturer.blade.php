@@ -25,31 +25,17 @@
                 </div>
                 {!! Form::close() !!}
                 <div class="manufacturer-list">
-                    @if($manu_list->count())
+                    @if(count($manu_list))
                     <div class="row">
                         <div class="col-xs-6 col-md-5">
-                            <label>Hãng sản xuất</label>
+                            <label>Thương hiệu</label>
                         </div>
                         <div class="col-xs-6 col-md-7">
-                            <label>Nhãn hiệu</label>
+                            <label>Loại xe</label>
                         </div>
                     </div>
                     @endif
                     <div class="group-items">
-                        @forelse ($manu_list as $manu)
-                            <div class="bdr-bottom group-row cursor-pt">
-                                <div class="row">
-                                    <div class="col-xs-6 col-md-5 padding-right-10 first-letter">
-                                        {{ $manu->name }}
-                                    </div>
-                                    <div class="col-xs-6 col-md-7 no-padding-left first-letter">
-                                        (currently unused)
-                                    </div>
-                                    <i class="fa fa-chevron-right"></i>
-                                </div>
-                            </div>
-                        @empty
-                        @endforelse
                     </div>
                 </div>
             </div>
@@ -61,5 +47,9 @@
     <link rel="stylesheet" type=text/css href="{{ asset('/css/manufacturer.css') }}">
 @stop()
 @section('styles')
+    @parent
     <script src="{{ asset('/js/admin/manufacturer.js') }}"></script>
+    <script>
+        Manufacturer.init($("#manufacturer"), {!! json_encode($manu_list) !!});
+    </script>
 @stop()

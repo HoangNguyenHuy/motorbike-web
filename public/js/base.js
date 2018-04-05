@@ -1,7 +1,7 @@
 /**
  * @type JBase
  */
-
+var $container = $("#container");
 var JBase = (function () {
     var self = this;
 

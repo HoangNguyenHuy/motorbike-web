@@ -43,9 +43,6 @@
     <script src="{{ asset('/js/Ostring.js') }}"></script>
     <script src="{{ asset('/js/base.js') }}"></script>
 
-    {{--JS self-definition--}}
-    @yield('styles')
-    {{--End JS--}}
 
 </head>
 <body>
@@ -64,7 +61,7 @@
             </div>
         </div>
         <!-- Container -->
-        <div class='container'>
+        <div class='container' id="container">
             @yield('container')
         </div>
         <!-- End Container -->
@@ -72,5 +69,12 @@
         @include('footer')
         <!-- End Footer -->
     </div>
+
+
+    {{--JS self-definition--}}
+    @yield('styles')
+    {{--End JS--}}
+
+
 </body>
 </html>
