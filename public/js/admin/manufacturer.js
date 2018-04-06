@@ -13,9 +13,12 @@ var Manufacturer = (function () {
         onAddItem: null,
         onItemClick: null
     },
+    $modal = null,
     $list = null,
     _$addForm = null,
+    _$editForm = null,
     groups_data = [],
+    requesting = false,
 
     init = function ($container, groups, opts) {
         $list = $container.find('.group-items');
@@ -52,8 +55,22 @@ var Manufacturer = (function () {
         var $item = renderItem(data);
         $list.prepend($item);
         groups_data.unshift(data);
-        // TODO it is the show popup edit form
-        // initItem($item, data);
+        initItem($item, data);
+    },
+
+    editSuccess = function (data) {
+        $list.find('#manufacturer_' + data.id + ' .group-name').text(data.name);
+        closeModal();
+    },
+
+    removeSuccess = function (group_id) {
+        $list.find('#manufacturer_' + group_id).remove();
+        closeModal();
+    },
+
+    closeModal = function () {
+        $('.modal.in').modal('hide');
+        $('.modal-backdrop.in').remove();
     },
 
     initItem = function ($item, data) {
@@ -65,7 +82,7 @@ var Manufacturer = (function () {
                     return;
                 }
                 requesting = true;
-                JBase.send('/settings/group-management/' + data.id, {
+                JBase.send('/manufacturer/' + data.id + '/edit', {
                     type: 'get',
                     success: function (res) {
                         requesting = false;
@@ -74,6 +91,30 @@ var Manufacturer = (function () {
                 });
             }
         })
+    },
+
+    showEditModal = function ($editHtml, data) {
+        $modal = JBase.modal({
+            body: $editHtml,
+            modal_opts: {
+                className: 'cem-modal modal-edit-group',
+            },
+            on_show: function() {
+                initEditForm($modal._target.find('form'), data);
+            }
+        });
+    },
+
+    initEditForm = function ($editForm, data, options) {
+        _$editForm = $editForm;
+        var opts = $.extend({}, {
+            onSaveSuccess: editSuccess,
+            onRemoveSuccess: removeSuccess
+        }, options);
+        initForm($editForm, opts);
+        // $editForm.find('.btn-remove').click(function () {
+        //     confirmRemoveItem(data.id, opts);
+        // })
     },
 
     initForm = function ($form, options) {

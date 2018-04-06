@@ -11,6 +11,7 @@ use App\Serializes\ManufacturerSerialize;
 use Illuminate\Http\Request;
 
 use Exception;
+use View;
 use Illuminate\Support\Facades\DB;
 
 class ManufacturerController extends Controller
@@ -83,7 +84,16 @@ class ManufacturerController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $manufacturer = Manufacturer::where(['id' => $id])->first();
+            $view = View::make('admin/templates/_edit_manufacturer', ['manu'=>$manufacturer]);
+            $html = $view->render();
+            $res['html']= $html;
+            return $res;
+        }
+        catch (Exception $e) {
+            echo 'Caught exception: ', $e->getMessage();
+        }
     }
 
     /**
@@ -95,7 +105,13 @@ class ManufacturerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ahihi['success'] = true;
+//        $manufacturer = Manufacturer::where(['id' => $id])->first();
+//        $manu_data = ManufacturerSerialize::serialize($manufacturer);
+//            if($manufacturer){
+//                $manufacturer->update($manu_data);
+//            }
+        return $ahihi;
     }
 
     /**

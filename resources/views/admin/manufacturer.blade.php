@@ -41,6 +41,7 @@
             </div>
         </div>
     </div>
+    @include('includes/_alert_modal')
 @stop
 @section('css-uncompress')
     <link rel="stylesheet" type=text/css href="{{ asset('/css/form.css') }}">

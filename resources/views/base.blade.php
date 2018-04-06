@@ -33,10 +33,13 @@
     {{--JS Boostrap--}}
     {{-- TODO update import same olivia-ui templates/base.html --}}
     {{-- TODO how to return current user form controller to js --}}
-    <script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>
+    {{-- TODO review include js and remove them --}}
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    {{--<script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>--}}
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
+    {{--<script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>--}}
+    <script src="{{ asset('/plugin/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap-hover-dropdown.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/jquery.validate.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
