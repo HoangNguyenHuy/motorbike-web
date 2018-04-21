@@ -33,9 +33,13 @@ label::first-letter, p::first-letter, .first-letter::first-letter {
     outline: none;
     border: none;
     height: 34px;
-    padding: 0 10px;
+    padding: 0 20px;
     font-size: 12px;
     color: #828585;
+}
+
+.header .align-self-top p{
+    display: inline-block;
 }
 
 .stick-menu{
@@ -335,4 +339,10 @@ label::first-letter, p::first-letter, .first-letter::first-letter {
 
 .modal-body {
     padding: 30px;
+}
+
+.align-self-center {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
 }

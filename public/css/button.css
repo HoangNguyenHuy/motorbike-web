@@ -1,6 +1,6 @@
-body:not(.desktop) .btn, body:not(.safari) .btn {
-    min-width: 100%;
-}
+/*body:not(.desktop) .btn, body:not(.safari) .btn {*/
+    /*min-width: 100%;*/
+/*}*/
 
 .btn-primary,
 .btn-save{

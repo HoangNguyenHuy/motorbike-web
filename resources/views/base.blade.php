@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="{{ asset('/images/vk.jpg') }}">
 
     {{--CSS Boostrap--}}
-    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap4.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap4.min.css') }}">--}}
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/fonts/awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type=text/css href="{{ asset('/css/base-style.css') }}">

@@ -25,13 +25,14 @@
                 </div>
             </div>
             @if(Auth::user())
+                {{--TODO move this in tagbar--}}
                 <div class="col-md-3 align-self-top">
+                    <p class="d-inline float-right"> {{ Auth::user()->name }} | </p>
                     <a class="float-right" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
                         Logout
                     </a>
-                    <p class="d-inline float-right"> {{ Auth::user()->name }} | </p>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
