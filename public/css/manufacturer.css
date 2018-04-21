@@ -19,3 +19,90 @@
 form label {
     font-weight: bold;
 }
+
+#new-type {
+    display: none;
+}
+
+._results ul {
+    padding: 0;
+}
+
+._results ._items {
+    list-style: none;
+    margin: 14px 0px;
+}
+
+._results ul._items>li:last-child {
+    border-bottom: 1px solid #cbced3;
+}
+
+._results ul._items li {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 8.5px 0;
+    background-color: #fafafa;
+    border: 1px solid #cbced3;
+    border-bottom: 0;
+}
+
+.name-type {
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    width: 80%;
+    padding: 10px ;
+    position: relative;
+}
+
+#motor-type [contenteditable="true"]:after {
+    content: '';
+    position: absolute;
+    border-bottom: 1px dashed #B3B3B3;
+    width: 94%;
+    left: 10px;
+    bottom: 3px;
+}
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#motor-type .tools span.save {
+    display: none;
+}
+
+#motor-type .tools.editing span.edit {
+    display: none;
+}
+
+#motor-type .tools.editing span.save {
+    display: inline-block;
+}
+
+#motor-type .tools span.delete {
+    color: #a94442;
+}
+
+#motor-type .tools span {
+    cursor: pointer;
+    margin: 0 3px;
+    font-size: 15px;
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

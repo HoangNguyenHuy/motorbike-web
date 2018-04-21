@@ -1,3 +1,7 @@
+/*body:not(.desktop) .btn, body:not(.safari) .btn {*/
+    /*min-width: 100%;*/
+/*}*/
+
 .btn-primary,
 .btn-save{
     min-width: 110px;
@@ -32,4 +36,25 @@
     font-weight: 600;
     box-shadow: none !important;
     border: 1px solid rgba(0, 0, 0, .15);
+}
+
+.btn-red {
+    background: #da5656;
+    border: solid 0.5px rgba(0,0,0,0.1);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-weight: 600;
+    box-shadow: none!important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.btn-red:hover,
+.btn-red:focus,
+.btn-red:active {
+    background: #d54141!important;
+    color: #ffffff;
+    border: solid 0.5px rgba(0,0,0,0.1);
 }

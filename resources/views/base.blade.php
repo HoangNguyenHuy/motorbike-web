@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="{{ asset('/images/vk.jpg') }}">
 
     {{--CSS Boostrap--}}
-    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap4.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap4.min.css') }}">--}}
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/fonts/awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type=text/css href="{{ asset('/css/base-style.css') }}">
@@ -33,19 +33,19 @@
     {{--JS Boostrap--}}
     {{-- TODO update import same olivia-ui templates/base.html --}}
     {{-- TODO how to return current user form controller to js --}}
-    <script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>
+    {{-- TODO review include js and remove them --}}
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    {{--<script src="{{ asset('/bootstrap/js/jquery-3.2.1.min.js') }}"></script>--}}
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
+    {{--<script src="{{ asset('/bootstrap/js/bootstrap4.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>--}}
+    <script src="{{ asset('/plugin/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap-hover-dropdown.min.js') }}"></script>
     <script src="{{ asset('/bootstrap/js/jquery.validate.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
     <script src="{{ asset('/js/Ostring.js') }}"></script>
     <script src="{{ asset('/js/base.js') }}"></script>
 
-    {{--JS self-definition--}}
-    @yield('styles')
-    {{--End JS--}}
 
 </head>
 <body>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <!-- Container -->
-        <div class='container'>
+        <div class='container' id="container">
             @yield('container')
         </div>
         <!-- End Container -->
@@ -72,5 +72,12 @@
         @include('footer')
         <!-- End Footer -->
     </div>
+
+
+    {{--JS self-definition--}}
+    @yield('styles')
+    {{--End JS--}}
+
+
 </body>
 </html>

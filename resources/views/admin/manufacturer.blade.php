@@ -25,48 +25,32 @@
                 </div>
                 {!! Form::close() !!}
                 <div class="manufacturer-list">
+                    @if(count($manu_list))
                     <div class="row">
                         <div class="col-xs-6 col-md-5">
-                            <label>Hãng sản xuất</label>
+                            <label>Thương hiệu</label>
                         </div>
                         <div class="col-xs-6 col-md-7">
-                            <label>Nhãn hiệu</label>
+                            <label>Loại xe</label>
                         </div>
                     </div>
+                    @endif
                     <div class="group-items">
-                        <div class="bdr-bottom group-row cursor-pt">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-5 padding-right-10">
-                                    Honda
-                                </div>
-                                <div class="col-xs-6 col-md-7 no-padding-left">
-                                    (currently unused)
-                                </div>
-                                <i class="fa fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="bdr-bottom group-row cursor-pt">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-5 padding-right-10">
-                                    Yamaha
-                                </div>
-                                <div class="col-xs-6 col-md-7 no-padding-left">
-                                    (currently unused)
-                                </div>
-                                <i class="fa fa-chevron-right"></i>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+    @include('includes/_alert_modal')
 @stop
 @section('css-uncompress')
     <link rel="stylesheet" type=text/css href="{{ asset('/css/form.css') }}">
     <link rel="stylesheet" type=text/css href="{{ asset('/css/manufacturer.css') }}">
 @stop()
 @section('styles')
+    @parent
     <script src="{{ asset('/js/admin/manufacturer.js') }}"></script>
+    <script>
+        Manufacturer.init($("#manufacturer"), {!! json_encode($manu_list) !!});
+    </script>
 @stop()

@@ -13,7 +13,7 @@
         <div class='main-categories-content'>
             <ul class='mc-list'>
                 <li><a href='{{ route('user-info') }}'>Quản trị</a></li>
-                <li><a href='{{ route( 'manufacturer') }}'>Hãng sản xuất</a></li>
+                <li><a href='{{ route( 'manufacturer') }}'>Hãng xe</a></li>
                 <li><a href='/outlander-1'>Bán xe</a></li>
                 <li><a href='/outlander-sport-1'>Thống kê</a></li>
             </ul>

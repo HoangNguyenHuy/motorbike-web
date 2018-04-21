@@ -14,10 +14,11 @@ class ResponseCustom
 {
     public static function response($json_data, $statusCode=200)
     {
+        $response = [];
         if ($statusCode=200){
-            $json_data['success'] = true;
+            $response['success'] = true;
         }
-        $response = response()->json($json_data);
+        $response['data'] = $json_data?json_decode($json_data):[];
         if ($statusCode != 200){
             $statusText = Response::$statusTexts[$statusCode];
             $response->setStatusCode($statusCode,$statusText);

@@ -13,3 +13,6 @@
         @yield('detail')
     </div>
 @stop
+@section('styles')
+    <script src="{{ asset('/plugin/js/jsrender.js') }}"></script>
+@stop

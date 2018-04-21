@@ -1,0 +1,45 @@
+
+.notification-modal{
+	background-color: rgba(255, 255, 255, 0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+}
+.notifications {
+    position: fixed;
+    z-index: 100000;
+}
+
+/* Positioning */ 
+.notifications.top-center{
+	top: 25px;
+	left: 50%;
+}
+.notifications.top-right {
+    right: 10px;
+    top: 25px;
+}
+
+.notifications.top-left {
+    left: 10px;
+    top: 25px;
+}
+
+.notifications.bottom-left {
+    left: 10px;
+    bottom: 25px;
+}
+
+.notifications.bottom-right {
+    right: 10px;
+    bottom: 25px;
+}
+
+/* Notification Element */
+.notifications > div {
+    position: relative;
+    margin: 5px 0px;
+}

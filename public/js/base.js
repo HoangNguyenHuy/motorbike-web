@@ -1,13 +1,16 @@
 /**
  * @type JBase
  */
-
+var $container = $("#container");
 var JBase = (function () {
     var self = this;
 
-    function setDefaultValue($form) {
+    function setDefaultValue($form, $ignores) {
         var $inputs = $form.find('input[type!=submit][type!=button]');
         var json = {};
+        if ($ignores){
+            $inputs = $inputs.not($ignores);
+        }
         $inputs.filter(function () {
             var key = $(this).attr('name');
             var default_value = '';
@@ -21,8 +24,12 @@ var JBase = (function () {
         window.jsonDefaultValue = JSON.stringify(json);
     }
 
-    function detectFormChange($form) {
+    function detectFormChange($form, $ignores) {
+        var self = $form;
         var $inputs = $form.find('input[type!=submit][type!=button]');
+        if ($ignores){
+            $inputs = $inputs.not($ignores);
+        }
         $inputs.on('keyup change', function() {
             var default_value = window.jsonDefaultValue;
             var json = {};
@@ -38,9 +45,9 @@ var JBase = (function () {
             });
             json = JSON.stringify(json);
             if (json === default_value) {
-                $('.btn-save').addClass('hide')
+                self.find('.btn-save').addClass('hide')
             } else {
-                $('.btn-save').removeClass('hide');
+                self.find('.btn-save').removeClass('hide');
             }
         });
     }
@@ -62,7 +69,7 @@ var JBase = (function () {
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                 var csrftoken = $('meta[name="csrf-token"]').attr('content');
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                xhr.setRequestHeader("X-CSRF-TOKEN", csrftoken);
             }
         };
         var requestParams = {
