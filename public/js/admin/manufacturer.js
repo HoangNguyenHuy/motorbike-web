@@ -112,10 +112,142 @@ var Manufacturer = (function () {
             onRemoveSuccess: removeSuccess
         }, options);
         initForm($editForm, opts);
-        // $editForm.find('.btn-remove').click(function () {
-        //     confirmRemoveItem(data.id, opts);
-        // })
+        toggleEditRow();
+        events(data);
+        _addType($editForm, data.id);
+        $editForm.find('.btn-remove').click(function () {
+            confirmRemoveItem(data.id, opts);
+        });
+        JBase.setDefaultValue($editForm, $editForm.find('#type'));
+        JBase.detectFormChange($editForm, $editForm.find('#type'));
     },
+
+    confirmRemoveItem = function (mft_id, options) {
+        closeModal();
+        JBase.confirm({
+            title: 'Confirm',
+            body: ostring.confirm_delete_manufacturer,
+            ok_text: 'Yes',
+            ok_callback: function () {
+                handleRemove(mft_id, options);
+            },
+            cancel_text: 'No',
+        });
+    },
+
+    handleRemove = function (mft_id, options) {
+        JBase.send('manufacturer/' + mft_id, {
+            type: 'DELETE',
+            success: function (res) {
+                if (res.success) {
+                    if (options.onRemoveSuccess) {
+                        options.onRemoveSuccess(mft_id);
+                    }
+                }
+            }
+        });
+    },
+
+    setTypes = function ($form) {
+        var types = '';
+        $form.find('._results ul li').each(function () {
+            var type = $(this).find('.name-type').text();
+            if (!types)
+                types = type;
+            else
+                types = types+', ' + type;
+        });
+        var mft_id = $form.find('[name=id]').val();
+        var filter = '#manufacturer_' + mft_id + ' .group-type';
+        if (!types)
+            types = ostring.currently_unused;
+        $('#manufacturer').find(filter).text(types);
+    };
+
+    _addType = function ($form, mfr_id) {
+        var mfr_id = mfr_id;
+        $form.find('.btn-add').on('click', function() {
+            var input_type = $('#type');
+            if (!input_type.val()){
+                return false;
+            }
+            _handleSubmitType(null,{
+                name:input_type.val(),
+                mft_id:mfr_id,
+            });
+        });
+    },
+
+    events = function(data){
+        var mft_id = data.id;
+        $('#motor-type').on('click', '.tools .save', function(){
+            var $row = $(this).closest('li');
+            _handleSubmitType($row, {
+                name: $row.find('.name-type').text(),
+                mft_id:mft_id,
+            });
+        }).on('click', '.tools .delete', function(){
+            var $row = $(this).closest('li');
+            _handleSubmitType($row, '',true);
+        });
+    },
+
+    _handleSubmitType = function($row, params, is_del){
+        var type_id = $row?$row.attr('id'):null;
+        var url = 'motor-type';
+        var method = 'POST';
+        if(type_id){
+            url = url + '/' + type_id;
+            method = 'PUT';
+        }
+        if(is_del){
+            method = 'DELETE';
+        }
+        JBase.send(url, {
+            type: method,
+            data: params,
+            success: function(res) {
+                if (res.success) {
+                    if(is_del){
+                        delRow($row);
+                    }
+                    if(method === 'POST'){
+                        var $rowClone = $('#new-type').clone();
+                        var input_type = $('#type');
+                        $rowClone.attr('id', res.data.id);
+                        $rowClone.find('.name-type').text(input_type.val());
+                        $('._items').prepend($rowClone);
+                        input_type.val('');
+                    }
+                    setTypes($('#form_edit_manufacturer'));
+                }else {
+                    handleSubmitError($('#form_edit_manufacturer'), res);
+                }
+            },
+            error: function () {
+                JBase.message(ostring.try_again_later);
+            }
+        });
+    },
+
+    delRow = function($row){
+        $row.remove();
+        // $row.fadeOut('100', function(){
+        //     $(this).remove();
+        // });
+    },
+
+    toggleEditRow = function(){
+        $('#motor-type').on('click', '.tools .edit', function(){
+            var $row = $(this).closest('li');
+            $(this).closest('.tools').addClass('editing');
+            $row.find('.allow-edit').attr('contenteditable', true);
+        }).on('click', '.tools .save', function(){
+            var $row = $(this).closest('li');
+            var $tools = $(this).closest('.tools').removeClass('editing');
+            $row.find('.allow-edit').removeAttr('contenteditable');
+        });
+},
 
     initForm = function ($form, options) {
         var rules = {
@@ -143,6 +275,7 @@ var Manufacturer = (function () {
                 if (res.success) {
                     options.onSaveSuccess(res.data);
                     JBase.message(ostring.changes_saved);
+                    $('#name').val('');
                 } else {
                     handleSubmitError($form, res);
                 }

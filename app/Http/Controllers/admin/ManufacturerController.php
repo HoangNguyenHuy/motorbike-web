@@ -25,9 +25,15 @@ class ManufacturerController extends Controller
     {
         $manu_list = manufacturer::all()->sortByDesc("name");
         $list_item = [];
-        foreach ($manu_list as $manu)
-            // TODO update here, add list bike_type to $list_item
-            $list_item[] = array('id'=>$manu->id, 'name'=>$manu->name);
+        foreach ($manu_list as $manu){
+            $motor_types = MotorTypeController::get_motor_type_by_mft_id($manu->id);
+            $bike_types = $this->parse_motor_type($motor_types);
+            $list_item[] = array(
+                'id'=>$manu->id,
+                'name'=>$manu->name,
+                'bike_types'=>$bike_types,
+            );
+        }
         $data['form'] = BasicForm::init_form('add-manufacturer','manufacturerForm');
         $fields = BasicForm::manufacturer_add_form();
         $data['manu_list'] = $list_item;
@@ -53,8 +59,7 @@ class ManufacturerController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data = ManufacturerSerialize::serialize($data);
+        $data = ManufacturerSerialize::serialize();
         DB::beginTransaction();
         try {
             $manufacturer = Manufacturer::create($data);
@@ -85,8 +90,10 @@ class ManufacturerController extends Controller
     public function edit($id)
     {
         try {
+            // TODO refactor render html from view, create a render basic class
             $manufacturer = Manufacturer::where(['id' => $id])->first();
-            $view = View::make('admin/templates/_edit_manufacturer', ['manu'=>$manufacturer]);
+            $motor_types = MotorTypeController::get_motor_type_by_mft_id($manufacturer->id);
+            $view = View::make('admin/templates/_edit_manufacturer', ['manu'=>$manufacturer, 'motor_type'=>$motor_types]);
             $html = $view->render();
             $res['html']= $html;
             return $res;
@@ -105,13 +112,12 @@ class ManufacturerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ahihi['success'] = true;
-//        $manufacturer = Manufacturer::where(['id' => $id])->first();
-//        $manu_data = ManufacturerSerialize::serialize($manufacturer);
-//            if($manufacturer){
-//                $manufacturer->update($manu_data);
-//            }
-        return $ahihi;
+        $manufacturer = Manufacturer::where(['id' => $id])->first();
+        $manu_data = ManufacturerSerialize::serialize($manufacturer);
+            if($manufacturer){
+                $manufacturer->update($manu_data);
+            }
+        return ResponseCustom::response($manufacturer);
     }
 
     /**
@@ -122,6 +128,32 @@ class ManufacturerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $manufacturer = Manufacturer::where(['id' => $id])->first();
+            if($manufacturer){
+                $motor_types = MotorTypeController::get_motor_type_by_mft_id($manufacturer->id);
+                foreach ($motor_types as $motor_type){
+                    $motor_type->delete();
+                }
+                $manufacturer->delete();
+            }
+            DB::commit();
+            return ResponseCustom::response([]);
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
     }
+
+    public static function parse_motor_type($list_type){
+        $types = '';
+        foreach ($list_type as $type){
+            if (!$types)
+                $types = $type->name;
+            else
+                $types = $types.', '.$type->name;
+        }
+        return $types;
+    }
+
 }

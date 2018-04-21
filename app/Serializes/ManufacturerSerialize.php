@@ -21,10 +21,11 @@ class ManufacturerSerialize extends BasicSerialize
     }
 
     protected function setRules(){
+        $instance = $this->instance;
         $this->rules = [
             'name' => [
                 'required',
-                Rule::unique($this->getModelName()),
+                Rule::unique($this->getModelName())->ignore($instance?$instance->id:0),
                 'max:255',
             ],
         ];

@@ -332,3 +332,7 @@ label::first-letter, p::first-letter, .first-letter::first-letter {
 .cursor-pt {
      cursor: pointer;
 }
+
+.modal-body {
+    padding: 30px;
+}

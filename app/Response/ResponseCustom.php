@@ -18,7 +18,7 @@ class ResponseCustom
         if ($statusCode=200){
             $response['success'] = true;
         }
-        $response['data'] = json_decode($json_data);
+        $response['data'] = $json_data?json_decode($json_data):[];
         if ($statusCode != 200){
             $statusText = Response::$statusTexts[$statusCode];
             $response->setStatusCode($statusCode,$statusText);
