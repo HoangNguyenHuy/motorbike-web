@@ -28,54 +28,52 @@
             {{--</div>--}}
         {{--</div>--}}
     {{--</div>--}}
-    <div class='col-md-9 col-xs-12'>
-        <div class="card card-content clearfix">
-            {!! $form !!}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="profile large">
-                        <div class="user-info">
-                            <div class="profile-pic">
-                                <img src="{{ $avatar_url }}"/>
-                                <input type="text" class="hidden-input" name="avatar" id="avatar" value="{{ $avatar_name }}"/>
-                                <div class="layer">
-                                    <div class="loader"></div>
-                                </div>
-                                <div class="form-group">
-                                    <a class="image-wrapper">
-                                        {!! $avatar !!}
-                                        <label class="edit glyphicon glyphicon-pencil" for="changePicture" type="file" title="Change picture"></label>
-                                    </a>
-                                </div>
+    <div class="card card-content clearfix">
+        {!! $form !!}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="profile large">
+                    <div class="user-info">
+                        <div class="profile-pic">
+                            <img src="{{ $avatar_url }}"/>
+                            <input type="text" class="hidden-input" name="avatar" id="avatar" value="{{ $avatar_name }}"/>
+                            <div class="layer">
+                                <div class="loader"></div>
                             </div>
-                            <div class="username">
-                                <div class="name"><span class="verified"></span>{{ $user_name }}</div>
-                                <div class="about">{{ $email_login }}</div>
+                            <div class="form-group">
+                                <a class="image-wrapper">
+                                    {!! $avatar !!}
+                                    <label class="edit glyphicon glyphicon-pencil" for="changePicture" type="file" title="Change picture"></label>
+                                </a>
                             </div>
+                        </div>
+                        <div class="username">
+                            <div class="name"><span class="verified"></span>{{ $user_name }}</div>
+                            <div class="about">{{ $email_login }}</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12"><hr class="margin-top-0"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">{!! $name !!}</div>
-                <div class="col-md-6">{!! $sex !!}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">{!! $phone_number !!}</div>
-                <div class="col-md-6">{!! $email !!}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-9">{!! $address !!}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">{!! $password !!}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">{!! $submit !!}</div>
-            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><hr class="margin-top-0"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{!! $name !!}</div>
+            <div class="col-md-6">{!! $sex !!}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{!! $phone_number !!}</div>
+            <div class="col-md-6">{!! $email !!}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">{!! $address !!}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{!! $password !!}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{!! $submit !!}</div>
         </div>
     </div>
     <div class="modal fade" id="cropModal" role="dialog">

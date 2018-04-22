@@ -9,8 +9,12 @@
 @extends('base', ['is_show_slide'=> false])
 @section('container')
     <div class='row'>
-        @include('admin/left-menu')
-        @yield('detail')
+        <div class='col-md-3 col-xs-12'>
+            @include('admin/left-menu')
+        </div>
+        <div class='col-md-9 col-xs-12'>
+            @yield('detail')
+        </div>
     </div>
 @stop
 @section('styles')
