@@ -15,6 +15,10 @@ label::first-letter, p::first-letter, .first-letter::first-letter {
     text-transform: uppercase;
 }
 
+ul>li {
+    list-style: none;
+}
+
 .header{
     margin: 10px 0;
 }

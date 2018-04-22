@@ -1,0 +1,75 @@
+#toolbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ededed;
+    box-shadow: 0 0.5px 0 0 #ededed;
+    width: 100%;
+    height: 48px;
+}
+
+#toolbar .header-text {
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+#toolbar .toolbar-icons {
+    display: inline-block;
+    position: relative;
+}
+
+#toolbar .menu {
+    display: inline-block;
+    margin-left: 25px;
+    margin-top: 5px;
+    font-size: 20px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+#toolbar .menu:first-child {
+    margin-left: 0;
+}
+
+#toolbar .toolbar-icons .menu {
+    opacity: 0.5;
+}
+
+#toolbar .toolbar-icons .menu:hover {
+    opacity: 0.75;
+}
+
+.badge-inbox {
+    background-color: #da5656;
+}
+
+.badge {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    min-width: 30px;
+    vertical-align: initial;
+    margin-left: 4px;
+    display: inline-block;
+    padding: 3px 7px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 10px;
+}
+
+.motor-list {
+    margin-top: 15px;
+    border: 1px solid #E2E2E2;
+}
+
+.motor-list .motor-row {
+    border-bottom: 1px solid #E2E2E2;
+    padding-top: 15px;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.motor-list .motor-row:last-child {
+    border-bottom: 0;
+}
