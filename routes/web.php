@@ -32,4 +32,5 @@ Route::group(['middleware' => 'isLogin'], function () {
     Route::post('/motor-type','admin\MotorTypeController@store')->name('add-motor-type');
     Route::put('/motor-type/{id}','admin\MotorTypeController@update')->name('edit-motor-type');
     Route::delete('/motor-type/{id}','admin\MotorTypeController@destroy')->name('delete-motor-type');
+    Route::get('/sale','admin\SaleController@index')->name('sale');
 });

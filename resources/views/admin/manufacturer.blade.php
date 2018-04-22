@@ -8,35 +8,33 @@
 ?>
 @extends('/admin/base')
 @section('detail')
-    <div class='col-md-9 col-xs-12'>
-        <div class="card card-content clearfix">
-            <div id="manufacturer">
-                <div class="lead">
-                    {!! \App\_const\strings::title_manufacturer !!}
+    <div class="card card-content clearfix">
+        <div id="manufacturer">
+            <div class="lead">
+                {!! \App\_const\strings::title_manufacturer !!}
+            </div>
+            {!! $form !!}
+            <div class="row">
+                <div class="col-xs-8 col-md-9">
+                    {!! $name !!}
                 </div>
-                {!! $form !!}
+                <div class="col-xs-4 col-md-3">
+                    {!! $submit !!}
+                </div>
+            </div>
+            {!! Form::close() !!}
+            <div class="manufacturer-list">
+                @if(count($manu_list))
                 <div class="row">
-                    <div class="col-xs-8 col-md-9">
-                        {!! $name !!}
+                    <div class="col-xs-6 col-md-5">
+                        <label>Thương hiệu</label>
                     </div>
-                    <div class="col-xs-4 col-md-3">
-                        {!! $submit !!}
+                    <div class="col-xs-6 col-md-7">
+                        <label>Loại xe</label>
                     </div>
                 </div>
-                {!! Form::close() !!}
-                <div class="manufacturer-list">
-                    @if(count($manu_list))
-                    <div class="row">
-                        <div class="col-xs-6 col-md-5">
-                            <label>Thương hiệu</label>
-                        </div>
-                        <div class="col-xs-6 col-md-7">
-                            <label>Loại xe</label>
-                        </div>
-                    </div>
-                    @endif
-                    <div class="group-items">
-                    </div>
+                @endif
+                <div class="group-items">
                 </div>
             </div>
         </div>

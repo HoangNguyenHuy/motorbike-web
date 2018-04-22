@@ -7,14 +7,13 @@
  */
 ?>
 <!-- Left Navigate -->
-<div class='col-md-3 col-xs-12'>
     <div class='main-categories'>
         <h3 class='main-categories-heading'>Chức năng</h3>
         <div class='main-categories-content'>
             <ul class='mc-list'>
                 <li><a href='{{ route('user-info') }}'>Quản trị</a></li>
                 <li><a href='{{ route( 'manufacturer') }}'>Hãng xe</a></li>
-                <li><a href='/outlander-1'>Bán xe</a></li>
+                <li><a href='{{ route( 'sale') }}'>Bán xe</a></li>
                 <li><a href='/outlander-sport-1'>Thống kê</a></li>
             </ul>
         </div>
@@ -36,5 +35,4 @@
             </div>
         </div>
     </div>
-</div>
 <!-- End Left Navigate -->
