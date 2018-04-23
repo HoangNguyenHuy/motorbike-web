@@ -33,52 +33,54 @@
         <div class="motor-list">
             <div class="row motor-row">
                 <div class="col-xs-4">
-                    <div>
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="200px" height="200px">
+                    <div class="img-thumbnail">
+                        <img src="{{ asset('images/products/20170819_124457.jpg') }}">
                     </div>
-                    <div>
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        +6
+                    <div class="sub-img">
+                        <img class="img-thumbnail" src="{{ asset('images/products/20170819_124457.jpg') }}">
+                        <img class="img-thumbnail" src="{{ asset('images/products/20170819_124457.jpg') }}">
+                        <img class="img-thumbnail" src="{{ asset('images/products/20170819_124457.jpg') }}">
+                        <div class="img-more img-thumbnail">+6</div>
                     </div>
                 </div>
-                <div class="col-xs-7">
-                    <p>name motor <span style="color: red">(Full)</span></p>
-                    <p>bien so: 43f1-32213</p>
-                    <p>mau: xanh</p>
-                    <p>price: 46.000.000 VND</p>
-                    <p>ngay dang: today</p>
+                <div class="col-xs-7 details">
+                    <div class="name-wrap">
+                        <label class="name">name motor <span>(Full)</span></label>
+                    </div>
+                    <label>bien so: 43f1-32213</label>
+                    <label>mau: xanh</label>
+                    <label>price: 46.000.000 VND</label>
+                    <label>ngay dang: today</label>
                 </div>
-                <div class="col-xs-1">
+                <div class="row-info">
                     <i class="fa fa-chevron-right"></i>
-                    <a style="display: block">chi tiet</a>
+                    {{--<a style="display: block">chi tiet</a>--}}
                 </div>
             </div>
             <div class="row motor-row">
                 <div class="col-xs-4">
-                    <div>
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="200px" height="200px">
+                    <div class="img-thumbnail">
+                        <img src="{{ asset('images/products/20170819_124457.jpg') }}">
                     </div>
-                    <div>
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        <img src="{{ asset('images/products/20170819_124457.jpg') }}" width="50px" height="50px">
-                        +6
+                    <div class="sub-img">
+                        <img class="img-thumbnail" src="{{ asset('images/products/20170819_124457.jpg') }}">
+                        <img class="img-thumbnail" src="{{ asset('images/products/20170819_124457.jpg') }}">
+                        <img class="img-thumbnail" src="{{ asset('images/products/20170819_124457.jpg') }}">
+                        <div class="img-more img-thumbnail">+6</div>
                     </div>
                 </div>
-                <div class="col-xs-7">
-                    <p>name motor <span style="color: red">(Full)</span></p>
-                    <p>bien so: 43f1-32213</p>
-                    <p>mau: xanh</p>
-                    <p>price: 46.000.000 VND</p>
-                    <p>ngay dang: today</p>
+                <div class="col-xs-7 details">
+                    <div class="name-wrap">
+                        <label class="name">name motor <span>(Full)</span></label>
+                    </div>
+                    <label>bien so: 43f1-32213</label>
+                    <label>mau: xanh</label>
+                    <label>price: 46.000.000 VND</label>
+                    <label>ngay dang: today</label>
                 </div>
-                <div class="col-xs-1">
+                <div class="row-info">
                     <i class="fa fa-chevron-right"></i>
-                    <a style="display: block">chi tiet</a>
+                    {{--<a style="display: block">chi tiet</a>--}}
                 </div>
             </div>
         </div>
