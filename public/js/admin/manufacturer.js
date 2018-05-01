@@ -162,7 +162,7 @@ var Manufacturer = (function () {
         if (!types)
             types = ostring.currently_unused;
         $('#manufacturer').find(filter).text(types);
-    };
+    },
 
     _addType = function ($form, mfr_id) {
         var mfr_id = mfr_id;
@@ -247,7 +247,7 @@ var Manufacturer = (function () {
             var $tools = $(this).closest('.tools').removeClass('editing');
             $row.find('.allow-edit').removeAttr('contenteditable');
         });
-},
+    },
 
     initForm = function ($form, options) {
         var rules = {

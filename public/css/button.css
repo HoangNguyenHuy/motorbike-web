@@ -58,3 +58,10 @@
     color: #ffffff;
     border: solid 0.5px rgba(0,0,0,0.1);
 }
+
+.ai-modal .modal-footer button {
+    min-width: auto;
+    display: inline-block;
+    width: calc((100% - 10px) / 2);
+    margin-bottom: 0;
+}
