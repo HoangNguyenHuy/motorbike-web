@@ -25,7 +25,7 @@ class CreateMotorbikesTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('type_id')->default(0); // id loại xe
             $table->integer('is_full_certificate')->default(0); // đầy đủ giấy tờ
-            $table->integer('id_register')->default(0); // số giấy đăng ký
+            $table->integer('id_register')->default(0); // số giấy đăng ký ** cà vẹt xe
             $table->integer('thumbnail'); // ảnh mô tả
             $table->integer('price');
         });

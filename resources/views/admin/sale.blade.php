@@ -22,7 +22,7 @@
                 <div class="toolbar-icons">
                     <ul>
                         <li>
-                            <span class="fa fa-plus menu cursor-pt"></span>
+                            <span class="fa fa-plus menu cursor-pt plus-icon" title="Add product" onclick="Sale.showAddProduct();"></span>
                             <span class="fa fa-list-ul menu cursor-pt"></span>
                             <span class="fa fa-filter menu cursor-pt"></span>
                         </li>
@@ -54,7 +54,6 @@
                 </div>
                 <div class="row-info">
                     <i class="fa fa-chevron-right"></i>
-                    {{--<a style="display: block">chi tiet</a>--}}
                 </div>
             </div>
             <div class="row motor-row">
@@ -80,15 +79,16 @@
                 </div>
                 <div class="row-info">
                     <i class="fa fa-chevron-right"></i>
-                    {{--<a style="display: block">chi tiet</a>--}}
                 </div>
             </div>
         </div>
     </div>
+    @include('includes/_add_product')
 @stop
 @section('css-uncompress')
     <link rel="stylesheet" type=text/css href="{{ asset('/css/sale.css') }}">
 @stop()
 @section('styles')
     @parent
+    <script src="{{ asset('/js/admin/sale.js') }}"></script>
 @stop()
